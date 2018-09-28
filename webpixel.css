@@ -1,0 +1,15 @@
+@import url('font/stylesheet.css');
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, body {
+    font-family: Circa;
+}
+.fullscreen-section {
+    width: 100%;
+    height: 100%;
+}
+.section-heading {
+    font-size: 64px;
+}
+.section-heading span {
+    color: #41B3D6;
+}
