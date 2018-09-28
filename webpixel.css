@@ -10,6 +10,30 @@
 .section-heading {
     font-size: 64px;
 }
-.section-heading span {
+.blue-text {
     color: #41B3D6;
+}
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+.btn {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+[class*="btn-outline"] {
+    border-width: 3px;
+    border-radius: 0;
+    border-color: #3FAED0;
+    color: #3FAED0;
+}
+[class*="btn-outline"]:hover,
+[class*="btn-outline"]:active {
+    border-color: #FF8100;
+    color: #ffffff;
+    background-color:FF8100;
+}
+[class*="btn-outline"]:focus {
+    box-shadow: none;
 }
