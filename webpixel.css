@@ -1,15 +1,49 @@
 @import url('font/stylesheet.css');
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, body {
+body {
     font-family: Circe;
+    color: #000000;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: Circe;
+    color: #000000;
+    font-weight: 800;
+}
+img {
+    max-width: 100%;
+    height: auto;
 }
 .fullscreen-section {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+}
+.fullscreen-section .container-fluid,
+.fullscreen-section .row {
     height: 100%;
 }
 .section-heading {
     font-size: 64px;
 }
-.section-heading span {
+.blue-text {
     color: #41B3D6;
+}
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+.btn {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+[class*="btn-outline"] {
+    border-width: 3px;
+    border-radius: 0;
+    border-color: #3FAED0;
+    color: #3FAED0;
+}
+[class*="btn-outline"]:hover {
+    border-color: #FF8100;
+    color: #ffffff;
+    background-color: #FF8100;
 }
