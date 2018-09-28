@@ -1,10 +1,18 @@
 @import url('font/stylesheet.css');
-
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, body {
-    font-family: Circa;
+body {
+    font-family: Circe;
+    color: #000000;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: Circe;
+    font-weight: 800;
 }
 .fullscreen-section {
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
+}
+.fullscreen-section .container-fluid,
+.fullscreen-section .container-fluid > .row {
     height: 100%;
 }
 .section-heading {
@@ -32,7 +40,7 @@ p {
 [class*="btn-outline"]:active {
     border-color: #FF8100;
     color: #ffffff;
-    background-color:FF8100;
+    background-color: #FF8100;
 }
 [class*="btn-outline"]:focus {
     box-shadow: none;
