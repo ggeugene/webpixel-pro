@@ -8,33 +8,74 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="webpixel.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <title>WebPixel Main Page</title>
   </head>
   <body>
-    
-    <section class="fullscreen-section">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-md-5 col-sm-12">
-                    <img src="img/cube.png">
-                </div>
-                <div class="col-md-4 col-sm-12">
-                    <h2 class="section-heading text-left font-weight-extrabold text-uppercase">Lorem ipsum<span class="blue-text">.</span></h2>
-                    <p class="text-left mt-4 mb-5">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации “Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..” Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам “lorem ipsum” сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
-                    <div class="row">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-outline-primary btn-block py-3">Заполнить бриф</a>
-                        </div>
-                        <div class="col-6">
-                            <a href="#" class="btn btn-outline-primary btn-block py-3">Подробнее</a>
-                        </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-1 sidebar bg-white">
+                <div class="sidebar-sticky d-sm-flex flex-sm-column justify-content-between py-3">
+                    <!-- <ul class="nav flex-column justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item</a>
+                        </li>
+                    </ul> -->
+                    <div class="logo-container align-self-center">
+                        <a href="/" class="logo-link">
+                            <img src="img/logo_mini.png"/>
+                        </a>
                     </div>
+                    <div class="menu-container text-center">
+                        <span class="menu-text text-uppercase">Меню</span><i class="material-icons">expand_more</i>
+                    </div>
+                    <ul class="socials-container flex-row justify-content-center">
+                        <li class="social-item">
+                            <a class="social-link px-2" href="#"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li class="social-item">
+                            <a class="social-link px-2" href="#"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-md-3"></div>
-            </div>
+            </nav>
+            <main role="main" class="col-md-11 col-sm-12 ml-sm-auto">
+                <section class="fullscreen-section">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 col-sm-12">
+                            <img src="img/cube.png">
+                        </div>
+                        <div class="col-md-4 col-sm-12 pl-sm-4">
+                            <h2 class="section-heading text-left font-weight-extrabold text-uppercase">Lorem ipsum<span class="blue-text">.</span></h2>
+                            <p class="text-left mt-4 mb-5">Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации “Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..” Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам “lorem ipsum” сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-outline-primary btn-block py-3">Заполнить бриф</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-outline-primary btn-block py-3">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </section>
+            </main>
         </div>
 
-    </section>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
