@@ -35,9 +35,24 @@ main::before {
 }
 .section-heading {
     font-size: 64px;
+    line-height: 1;
 }
-.tab-heading {
+.tab-heading,
+.carousel-item-heading,
+.carousel-item-year {
     font-size: 36px;
+}
+.carousel-item-heading,
+.carousel-item-year {
+    font-weight: 800;
+}
+.carousel-item-heading {
+    line-height: 1.2;
+}
+.carousel-item-month {
+    font-size: 14px;
+    color: #C7C7C7;
+    font-weight: 800;
 }
 .tab-subheading {
     font-size: 28px;
@@ -221,4 +236,38 @@ p,
 }
 .background-aqua {
     background-color: #41B3D6;
+}
+.partner-logo {
+    height: 120px;
+    border: 1px solid #a0a0a0;
+    transition: all 0.15s ease-in-out;
+}
+.partner-logo svg {
+    fill: #a0a0a0;
+    transition: fill 0.15s ease-in-out;
+    width: 50%;
+}
+.partner-logo:hover svg {
+    fill: #ffffff;
+}
+.partner-logo:hover {
+    border-color: #41B3D6;
+    background-color: #41B3D6;
+}
+.vert .carousel-item-next.carousel-item-left,
+.vert .carousel-item-prev.carousel-item-right {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.vert .carousel-item-next,
+.vert .active.carousel-item-right {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100% 0);
+}
+
+.vert .carousel-item-prev,
+.vert .active.carousel-item-left {
+-webkit-transform: translate3d(0,-100%, 0);
+        transform: translate3d(0,-100%, 0);
 }
