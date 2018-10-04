@@ -46,6 +46,9 @@ main::before {
 .carousel-item-year {
     font-weight: 800;
 }
+.carousel-item-year {
+    line-height: 1.4;
+}
 .carousel-item-heading {
     line-height: 1.2;
 }
@@ -53,6 +56,7 @@ main::before {
     font-size: 14px;
     color: #C7C7C7;
     font-weight: 800;
+    /* margin-bottom: 0; */
 }
 .tab-subheading {
     font-size: 28px;
@@ -270,4 +274,144 @@ p,
 .vert .active.carousel-item-left {
 -webkit-transform: translate3d(0,-100%, 0);
         transform: translate3d(0,-100%, 0);
+}
+.carousel-item-container:not(:first-child) .col-md-4::before {
+    content: '';
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    width: 1px;
+    height: 24px;
+    background-color: #9F9F9F;
+}
+#projects .section-heading::before {
+    content: '';
+    position: absolute;
+    top: 22%;
+    left: -10%;
+    width: 34.5%;
+    height: 1px;
+    background-color: #9F9F9F;
+}
+#projects .section-heading::after {
+    content: '';
+    position: absolute;
+    top: 22%;
+    left: 24.4%;
+    width: 1px;
+    height: 12rem;
+    background-color: #9F9F9F;
+}
+#projects > .row > [class*="col-md"]::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 7%;
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+#googlemap { 
+    height: 100%; 
+    width: 100%; 
+    position:absolute; 
+    top: 0; 
+    left: 0; 
+    z-index: 0;
+}
+#googlemap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 100%);
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
+    background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+.contact-list {
+    list-style-type: none;
+    padding-inline-start: 50px;
+}
+.contact-list-item {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    position: relative;
+}
+.contact-list-item a {
+    color: #000000;
+    transition: color 0.15s ease-in-out;
+}
+.contact-address::before,
+.contact-phone::before,
+.contact-mail::before {
+    position: absolute;
+    font-family: 'Material Icons';
+    font-size: 30px;
+    color: #41B3D6;
+    left: -50px;
+}
+.contact-address::before {
+    content: 'near_me';
+    top: 0;
+}
+.contact-phone::before {
+    content: 'phone';
+    top: -5px;
+}
+.contact-mail::before {
+    content: 'alternate_email';
+    top: -6px;
+}
+.contact-list-item a:hover {
+    color: #41B3D6;
+    text-decoration: none;
+}
+input[type="text"] {
+    position: relative;
+    background-color: transparent;
+    color: #000000;
+    border: 1px solid #000000;
+    max-width: 260px;
+    font-size: 18px;
+    padding: 17px 17px 17px 50px;
+    margin-bottom: 30px;
+}
+input[type="submit"] {
+    max-width: 260px;
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    padding: 17px;
+    background-color: #FF8100;
+    color: #ffffff;
+    border: none;
+}
+input[type="text"]:focus,
+input[type="text"]:active {
+    border-color: #FF8100;
+}
+.input-name {
+    background-image: url('img/user-icon.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: left 20px top 20px;
+}
+.input-mail {
+    background-image: url('img/envelope-icon.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: left 18px top 22px;
+}
+
+@media(min-width:768px) {
+    .w-md-100 {
+        height: 100%;
+    }
 }
