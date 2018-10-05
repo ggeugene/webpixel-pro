@@ -2,3 +2,4 @@ img/**
 font/**
 js/**
 css/**
+!js/webpixel.js
