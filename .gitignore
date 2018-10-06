@@ -3,3 +3,4 @@ font/**
 js/**
 css/**
 !js/webpixel.js
+!css/webpixel.css
