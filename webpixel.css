@@ -34,13 +34,13 @@ main::before {
     height: 100%;
 }
 .section-heading {
-    font-size: 64px;
+    font-size: 4rem;
     line-height: 1;
 }
 .tab-heading,
 .carousel-item-heading,
 .carousel-item-year {
-    font-size: 36px;
+    font-size: 2.25rem;
 }
 .carousel-item-heading,
 .carousel-item-year {
@@ -53,24 +53,24 @@ main::before {
     line-height: 1.2;
 }
 .carousel-item-month {
-    font-size: 14px;
+    font-size: 0.88rem;
     color: #C7C7C7;
     font-weight: 800;
     /* margin-bottom: 0; */
 }
 .tab-subheading {
-    font-size: 28px;
+    font-size: 1.75rem;
 }
 .blue-text {
     color: #41B3D6;
 }
 p,
 .tab-pane {
-    font-size: 18px;
+    font-size: 1.13rem;
     line-height: 1.6;
 }
 .btn {
-    font-size: 18px;
+    font-size: 1.13rem;
     font-weight: bold;
     letter-spacing: 3px;
 }
@@ -104,29 +104,12 @@ p,
     overflow: hidden;
     /* overflow-y: auto; */
 }
-/* .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px; 
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: 'liga';
-} */
 .menu-container {
     transform: rotate(-90deg);
     cursor: pointer;
 }
 .menu-text {
-    font-size: 20px;
+    font-size: 1.25rem;
     display: block;
     
     font-weight: bold;
@@ -137,7 +120,7 @@ p,
     top: 25px;
     left: 47px;
     color: #A0A0A0;
-    font-size: 30px;
+    font-size: 1.88rem;
 }
   .socials-container {
     display: flex;
@@ -149,7 +132,7 @@ p,
     padding-inline-start: 0px;
 }
 .social-link {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: #9B9B9B;
     transition: color 0.15s ease-in-out;
 }
@@ -161,14 +144,14 @@ p,
     transition: background-color 0.15s ease-in-out;
 }
 .advantage-icon i {
-    font-size: 48px;
+    font-size: 3rem;
 }
 .advantage-header {
-    font-size: 18px;
+    font-size: 1.13rem;
     line-height: 1;
 }
 .advantage-text {
-    font-size: 14px;
+    font-size: 0.88rem;
     line-height: 1.4;
     margin-bottom: 0;
 }
@@ -229,7 +212,7 @@ p,
     transition: 0.15s ease-in-out;
 }
 .tabs-left i {
-    font-size: 26px;
+    font-size: 1.63rem;
 }
 .tab-image {
     background-image: url('img/tab_image-1.jpg');
@@ -339,7 +322,7 @@ p,
     padding-inline-start: 50px;
 }
 .contact-list-item {
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.2;
     margin-bottom: 30px;
     position: relative;
@@ -353,7 +336,7 @@ p,
 .contact-mail::before {
     position: absolute;
     font-family: 'Material Icons';
-    font-size: 30px;
+    font-size: 1.88rem;
     color: #41B3D6;
     left: -50px;
 }
@@ -379,13 +362,13 @@ input[type="text"] {
     color: #000000;
     border: 1px solid #000000;
     max-width: 260px;
-    font-size: 18px;
+    font-size: 1.13rem;
     padding: 17px 17px 17px 50px;
     margin-bottom: 30px;
 }
 input[type="submit"] {
     max-width: 260px;
-    font-size: 18px;
+    font-size: 1.13rem;
     letter-spacing: 3px;
     font-weight: bold;
     padding: 17px;
