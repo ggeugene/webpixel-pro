@@ -11,7 +11,7 @@ img {
     max-width: 100%;
 }
 main {
-    background-image: url('img/background.jpg');
+    background-image: url('../img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -26,10 +26,10 @@ main::before {
     background-color:#ffffff;
     opacity: 0.9;
 }
-.fullscreen-section {
+/* .fullscreen-section {
     width: 100%;
     height: 100vh;
-}
+} */
 .row.align-items-center {
     height: 100%;
 }
@@ -215,7 +215,7 @@ p,
     font-size: 1.63rem;
 }
 .tab-image {
-    background-image: url('img/tab_image-1.jpg');
+    background-image: url('../img/tab_image-1.jpg');
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -382,13 +382,13 @@ input[type="text"]:active {
     border-color: #FF8100;
 }
 .input-name {
-    background-image: url('img/user-icon.png');
+    background-image: url('../img/user-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left 20px top 20px;
 }
 .input-mail {
-    background-image: url('img/envelope-icon.png');
+    background-image: url('../img/envelope-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left 18px top 22px;

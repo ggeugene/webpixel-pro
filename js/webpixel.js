@@ -37,4 +37,20 @@ $(document).ready(function(){
         controls: false
     });
     initGoogleMap();
+    new fullpage('#fullscreen', {
+        //options here
+        autoScrolling:true,
+        scrollHorizontally: true,
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+	    navigation: true,
+        navigationPosition: 'right',
+        parallax: true,
+        parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+        responsiveWidth: 768
+        // navigationTooltips: ['about', 'advantages', 'services', 'projects', 'contacts'],
+        // showActiveTooltip: false
+    });
+    
+    //methods
+    fullpage_api.setAllowScrolling(true);
 });
