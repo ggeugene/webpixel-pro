@@ -29,6 +29,7 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    transition: all 0.5s ease-in-out;
 }
 main::before {
     content: '';
@@ -129,6 +130,7 @@ p,
     left: 0;
     z-index: 1;
     border-right: 1px solid #A0A0A0;
+    transition: all 0.5s ease-in-out;
 }
 .sidebar-sticky {
     height: 100%;
@@ -197,6 +199,9 @@ p,
 .advantage-block:hover * {
     color: #ffffff;
 }
+#services .no-gutters {
+    margin: 0 -15px;
+}
 .tabs-left {
     border-bottom: none;
     border: none;
@@ -208,13 +213,6 @@ p,
 .tabs-left>li:not(:last-child) {
     margin-bottom: 2rem;
 }
-/* .tabs-left>li.active>a,
-.tabs-left>li.active>a:hover,
-.tabs-left>li.active>a:focus {
-    border-bottom-color: #ddd;
-    border-right-color: transparent;
-    color: #ffffff;
-} */
 .tabs-left>li.active>a:not(.active) {
     background-color: transparent;
     color: #ffffff;
@@ -317,7 +315,7 @@ p,
     height: 12rem;
     background-color: #9F9F9F;
 }
-#projects > .row > [class*="col-md"]::after {
+#projects .fp-tableCell > .row > [class*="col-md"]::after {
     content: '';
     position: absolute;
     left: 0;
