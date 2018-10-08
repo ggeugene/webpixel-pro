@@ -128,7 +128,8 @@ p,
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    width: 8.33333%;
+    z-index: 101;
     border-right: 1px solid #A0A0A0;
     transition: all 0.5s ease-in-out;
 }
@@ -138,26 +139,36 @@ p,
     overflow: hidden;
     /* overflow-y: auto; */
 }
+.logo-container {
+    position: absolute;
+    left: 2rem;
+    top: 2rem;
+}
 .menu-container {
-    transform: rotate(-90deg);
+    position: absolute;
+    right: 1.65rem;
+    top: 50%;
+    transform: rotate(-90deg) translateY(-50%);
     cursor: pointer;
 }
 .menu-text {
     font-size: 1.25rem;
     display: block;
-    
     font-weight: bold;
     letter-spacing: 2px;
 }
 .menu-text + i {
     position: absolute;
-    top: 25px;
-    left: 47px;
+    top: 40px;
+    left: 22px;
     color: #A0A0A0;
     font-size: 1.88rem;
 }
   .socials-container {
     display: flex;
+    position: absolute;
+    bottom: 1.44rem;
+    left: 3rem;
     list-style-type: none;
     margin-block-start: 0;
     margin-block-end: 0;
