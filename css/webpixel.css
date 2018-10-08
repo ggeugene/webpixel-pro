@@ -62,7 +62,7 @@ main::before {
     font-size: 1.75rem;
 }
 .blue-text {
-    color: #41B3D6;
+    color: #00AEEF;
 }
 p,
 .tab-pane {
@@ -77,8 +77,8 @@ p,
 [class*="btn-outline"] {
     border-width: 3px;
     border-radius: 0;
-    border-color: #3FAED0;
-    color: #3FAED0;
+    border-color: #00AEEF;
+    color: #00AEEF;
 }
 [class*="btn-outline"]:hover,
 [class*="btn-outline"]:active {
@@ -137,7 +137,7 @@ p,
     transition: color 0.15s ease-in-out;
 }
 .social-link:hover, .social-link:active {
-    color: #41B3D6;
+    color: #00AEEF;
 }
 .advantage-block {
     border: 1px solid #A0A0A0;
@@ -159,8 +159,8 @@ p,
     transition: color 0.15s ease-in-out;
 }
 .advantage-block:hover {
-    background-color: #41B3D6;
-    border-color: #41B3D6;
+    background-color: #00AEEF;
+    border-color: #00AEEF;
 }
 .advantage-block:hover * {
     color: #ffffff;
@@ -198,7 +198,7 @@ p,
 }
 .tabs-left>li>a:hover {
     background-color: #ffffff;
-    color: #41B3D6;
+    color: #00AEEF;
     text-decoration: none;
 }
 .tabs-left>li>a {
@@ -222,7 +222,7 @@ p,
     background-position-y: center;
 }
 .background-aqua {
-    background-color: #41B3D6;
+    background-color: #00AEEF;
 }
 .partner-logo {
     height: 120px;
@@ -238,8 +238,8 @@ p,
     fill: #ffffff;
 }
 .partner-logo:hover {
-    border-color: #41B3D6;
-    background-color: #41B3D6;
+    border-color: #00AEEF;
+    background-color: #00AEEF;
 }
 .vert .carousel-item-next.carousel-item-left,
 .vert .carousel-item-prev.carousel-item-right {
@@ -337,7 +337,7 @@ p,
     position: absolute;
     font-family: 'Material Icons';
     font-size: 1.88rem;
-    color: #41B3D6;
+    color: #00AEEF;
     left: -50px;
 }
 .contact-address::before {
@@ -353,7 +353,7 @@ p,
     top: -6px;
 }
 .contact-list-item a:hover {
-    color: #41B3D6;
+    color: #00AEEF;
     text-decoration: none;
 }
 input[type="text"] {
@@ -392,6 +392,37 @@ input[type="text"]:active {
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left 18px top 22px;
+}
+#fp-nav ul li,
+.fp-slidesNav ul li {
+    height: 18px;
+    width: 18px;
+    margin: 1rem 4rem 2rem 1rem;
+}
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    height: 18px;
+    width: 18px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    border-radius: 0;
+    background: #C6C6C6;
+}
+#fp-nav ul li:hover a span,
+.fp-slidesNav ul li:hover a span {
+    height: 28px;
+    width: 28px;
+}
+#fp-nav ul li a.active span,
+#fp-nav ul li:hover a.active span,
+.fp-slidesNav ul li a.active span,
+.fp-slidesNav ul li:hover a.active span {
+    height: 28px;
+    width: 28px;
+    margin: -5px 0 0 -5px;
+    border-radius: 0;
+    background: #00AEEF;
 }
 
 @media(min-width:768px) {
