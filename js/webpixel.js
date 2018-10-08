@@ -46,9 +46,16 @@ $(document).ready(function(){
         navigationPosition: 'right',
         parallax: true,
         parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
-        responsiveWidth: 768
-        // navigationTooltips: ['about', 'advantages', 'services', 'projects', 'contacts'],
-        // showActiveTooltip: false
+        responsiveWidth: 768,
+        onLeave: function(origin, destination, direction) {
+            if(origin.index == 0) {
+                $('.sidebar').addClass('show-sb');
+                $('main').removeClass('fullwidth');
+            } else if (destination.index == 0) {
+                $('.sidebar').removeClass('show-sb');
+                $('main').addClass('fullwidth');
+            }
+        }
     });
     
     //methods
