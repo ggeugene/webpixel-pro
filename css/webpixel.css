@@ -1,4 +1,18 @@
 @import url('../font/stylesheet.css');
+::selection {
+    background: #FF8100;
+    color: #ffffff; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+    background: #FF8100;
+    color: #ffffff; /* Gecko Browsers */
+}
+.blue-text::selection {
+    color: #000000;
+}
+.blue-text::-moz-selection {
+    color: #000000;
+}
 body {
     font-family: Circe;
     color: #000000;
@@ -32,6 +46,24 @@ main::before {
 } */
 .row.align-items-center {
     height: 100%;
+}
+.logo-bg {
+    fill:#00aeef;
+}
+.logo-text-light {
+    fill:#fff;
+}
+.logo-pixel {
+    fill:#ff8100;
+}
+.logo-excerpt {
+    font-size: 5rem;
+    font-weight: 200;
+    color: #4E4E4E;
+    margin-bottom: 0;
+}
+.full-logo-container svg {
+    width: 40%;
 }
 .section-heading {
     font-size: 4rem;
@@ -461,7 +493,7 @@ input[type="text"]:active {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     animation: shadow-pulse 1.5s infinite linear;
     opacity: 0;
 }
