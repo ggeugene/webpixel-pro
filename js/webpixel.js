@@ -64,7 +64,6 @@ $(document).ready(function(){
     $('.menu-container').on('click', function() {
         $('.sidebar').toggleClass('opened');
         let menuItemsArray = $('.menu-list-item');
-        
 
         if($('.sidebar').hasClass('opened')) {
             let sec = 100;
@@ -76,6 +75,7 @@ $(document).ready(function(){
                 sec += 100;
             }
             $('.menu-text').text('Закрыть');
+            $('.menu-text + .material-icons').text('close');
         } else {
             for(let list of menuItemsArray) {
                 $(list).animate({
@@ -84,6 +84,7 @@ $(document).ready(function(){
                 },300);
             }
             $('.menu-text').text('Меню');
+            $('.menu-text + .material-icons').text('expand_more');
         }
         
     });
