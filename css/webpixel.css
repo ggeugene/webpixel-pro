@@ -146,7 +146,7 @@ p,
 }
 .menu-container {
     position: absolute;
-    right: 1.65rem;
+    right: -0.4rem;
     top: 50%;
     transform: rotate(-90deg) translateY(-50%);
     cursor: pointer;
@@ -158,8 +158,8 @@ p,
     letter-spacing: 2px;
 }
 .menu-text + i {
-    position: absolute;
-    top: 40px;
+    display: block;
+    top: 30px;
     left: 22px;
     color: #A0A0A0;
     font-size: 1.88rem;
