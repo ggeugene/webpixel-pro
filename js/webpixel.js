@@ -60,4 +60,31 @@ $(document).ready(function(){
     
     //methods
     fullpage_api.setAllowScrolling(true);
+
+    $('.menu-container').on('click', function() {
+        $('.sidebar').toggleClass('opened');
+        let menuItemsArray = $('.menu-list-item');
+        
+
+        if($('.sidebar').hasClass('opened')) {
+            let sec = 100;
+            for(let list of menuItemsArray) {
+                $(list).delay(sec).animate({
+                    'opacity': 1,
+                    'left': 0
+                },300);
+                sec += 100;
+            }
+            $('.menu-text').text('Закрыть');
+        } else {
+            for(let list of menuItemsArray) {
+                $(list).animate({
+                    'opacity': 0,
+                    'left': '-150px'
+                },300);
+            }
+            $('.menu-text').text('Меню');
+        }
+        
+    });
 });
