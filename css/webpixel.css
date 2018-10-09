@@ -127,11 +127,14 @@ p,
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: -8.33333%;
     width: 8.33333%;
     z-index: 101;
     border-right: 1px solid #A0A0A0;
     transition: all 0.5s ease-in-out;
+}
+.sidebar.show-sb {
+    left: 0;
 }
 .sidebar-sticky {
     height: 100%;
@@ -147,7 +150,7 @@ p,
 .menu-container {
     position: absolute;
     right: -0.4rem;
-    top: 50%;
+    top: 47%;
     transform: rotate(-90deg) translateY(-50%);
     cursor: pointer;
 }
