@@ -37,6 +37,7 @@ $(document).ready(function(){
         controls: false
     });
     initGoogleMap();
+
     new fullpage('#fullscreen', {
         //options here
         autoScrolling:true,
@@ -48,12 +49,29 @@ $(document).ready(function(){
         parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
         responsiveWidth: 768,
         onLeave: function(origin, destination, direction) {
+            let prevAnimatedElements = $(origin.item).find('.animated');
+            if(prevAnimatedElements) {
+                for (const element of prevAnimatedElements) {
+                    $(element).animate({'opacity': 0}, 300 );
+                }
+            }
             if(origin.index == 0) {
                 $('.sidebar').addClass('show-sb');
                 $('main').removeClass('fullwidth');
             } else if (destination.index == 0) {
                 $('.sidebar').removeClass('show-sb');
                 $('main').addClass('fullwidth');
+            }
+        },
+        afterLoad: function(origin, destination, direction) {
+            if(destination.item) {
+                let nextAnimatedElements = $(destination.item).find('.animated');
+                let delay = 0;
+                for (const element of nextAnimatedElements) {
+                    $(element).delay(delay)
+                        .animate({'opacity': 1}, 500 );
+                    delay += 100;
+                }
             }
         }
     });
