@@ -1,3 +1,12 @@
+function getDocumentWidth() {
+    return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  };
+  
+  function getDocumentHeight() {
+    return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+  };
+  
+
 
 function initGoogleMap() {
     // The location
@@ -26,7 +35,11 @@ function initGoogleMap() {
     });
   }
 
-$(document).ready(function(){
+$(document).ready(function() {
+
+    initGoogleMap();
+
+    //Projects slider
     $('#lightSlider').lightSlider({
         item: 2.5,
         vertical: true,
@@ -36,8 +49,8 @@ $(document).ready(function(){
         pager: false,
         controls: false
     });
-    initGoogleMap();
 
+    //Fullpage scroll
     new fullpage('#fullscreen', {
         //options here
         autoScrolling:true,
@@ -79,6 +92,7 @@ $(document).ready(function(){
     //methods
     fullpage_api.setAllowScrolling(true);
 
+    //Sidebar animation
     $('.menu-container').on('click', function() {
         $('.sidebar').toggleClass('opened');
         let menuItemsArray = $('.menu-list-item');
@@ -106,4 +120,44 @@ $(document).ready(function(){
         }
         
     });
+
+    //Canvas
+    var canvas = document.getElementById('dotCanvas');
+    var context = canvas.getContext('2d');
+    
+    var vw = getDocumentWidth() / 2,
+        vh = getDocumentHeight() * 3/4;
+    
+    // resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', function() {
+        onResize(canvas);
+    }, false);
+
+    function onResize(canvas) {
+      vw = getDocumentWidth() / 2;
+      vh = getDocumentHeight() * 3/4;
+      resizeCanvas(canvas);
+    }
+    
+    function resizeCanvas(canvas) {
+      canvas.width = vw;
+      canvas.height = vh;
+      drawDots(context);
+    }
+    resizeCanvas(canvas);
+    
+    function drawDots(context) {
+      var r = 2.2,
+          cw = 25,
+          ch = 25;
+      
+      for (var x = 20; x < vw; x+=cw) {
+        for (var y = 20; y < vh; y+=ch) {
+            context.fillStyle = '#C6C6C6';   
+            context.fillRect(x-r/2,y-r/2,r,r);
+          }
+      }
+    }
+    drawDots(context);
+
 });
