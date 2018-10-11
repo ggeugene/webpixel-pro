@@ -1,12 +1,10 @@
 function getDocumentWidth() {
     return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  };
+};
   
-  function getDocumentHeight() {
+function getDocumentHeight() {
     return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-  };
-  
-
+};
 
 function initGoogleMap() {
     // The location
@@ -122,42 +120,53 @@ $(document).ready(function() {
     });
 
     //Canvas
-    var canvas = document.getElementById('dotCanvas');
-    var context = canvas.getContext('2d');
+    let canvasArray = document.getElementsByTagName('canvas');
+    let contextArray = [];
+    for (const canvas of canvasArray) {
+        contextArray.push(canvas.getContext('2d'));
+    }
+    // let context = canvas.getContext('2d');
+    console.dir(contextArray);
     
-    var vw = getDocumentWidth() / 2,
+    let vw = getDocumentWidth() / 2,
         vh = getDocumentHeight() * 3/4;
     
     // resize the canvas to fill browser window dynamically
     window.addEventListener('resize', function() {
-        onResize(canvas);
+        onResize(canvasArray);
     }, false);
 
-    function onResize(canvas) {
+    function onResize(canvasArray) {
       vw = getDocumentWidth() / 2;
       vh = getDocumentHeight() * 3/4;
-      resizeCanvas(canvas);
+      resizeCanvas(canvasArray);
     }
     
-    function resizeCanvas(canvas) {
-      canvas.width = vw;
-      canvas.height = vh;
-      drawDots(context);
+    function resizeCanvas(canvasArray) {
+        for (const canvas of canvasArray) {
+            canvas.width = vw;
+            canvas.height = vh;
+
+            drawDots(canvas.getContext('2d'));
+        }
     }
-    resizeCanvas(canvas);
+
+    resizeCanvas(canvasArray);
     
     function drawDots(context) {
-      var r = 2.2,
+      let r = 2.2,
           cw = 25,
           ch = 25;
       
-      for (var x = 20; x < vw; x+=cw) {
-        for (var y = 20; y < vh; y+=ch) {
+      for (let x = 20; x < vw; x+=cw) {
+        for (let y = 20; y < vh; y+=ch) {
             context.fillStyle = '#C6C6C6';   
             context.fillRect(x-r/2,y-r/2,r,r);
           }
       }
     }
-    drawDots(context);
+    for (const canvas of canvasArray) {
+        drawDots(canvas.getContext('2d'));
+    }
 
 });

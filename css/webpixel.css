@@ -604,9 +604,16 @@ input[type="text"]:active {
 .modal button.close:hover i {
     color: #000000;
 }
-#dotCanvas {
+.canvas-right,
+.canvas-left {
     position: absolute;
     top: 12.5%;
+    z-index: -1;
+}
+.canvas-left {
+    left: -6vw;
+}
+.canvas-right {
     right: -15px;
 }
 
