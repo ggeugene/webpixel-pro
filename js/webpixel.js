@@ -46,6 +46,17 @@ function animateLogo() {
     tl.staggerTo(path, duration, stagger_opts_to, stagger_val);
 }
 
+function animateLogoExcerpt() {
+
+        let animatedElements = $('#splash').find('.animated.delayed');
+        let delay = 3000;
+        for (const element of animatedElements) {
+            $(element).delay(delay)
+                .animate({'opacity': 1}, 1000 );
+            delay += 500;
+        }
+}
+
 function initGoogleMap() {
     // The location
     let icon = {
@@ -100,10 +111,10 @@ $(document).ready(function() {
         parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
         responsiveWidth: 768,
         onLeave: function(origin, destination, direction) {
-            let prevAnimatedElements = $(origin.item).find('.animated');
+            let prevAnimatedElements = $(origin.item).find('.animated:not(.delayed)');
             if(prevAnimatedElements) {
                 for (const element of prevAnimatedElements) {
-                    $(element).animate({'opacity': 0}, 300 );
+                    $(element).animate({'opacity': 0}, 300);
                 }
             }
             if(origin.index == 0) {
@@ -116,7 +127,8 @@ $(document).ready(function() {
         },
         afterLoad: function(origin, destination, direction) {
             if(destination.item) {
-                let nextAnimatedElements = $(destination.item).find('.animated');
+                animateLogoExcerpt();
+                let nextAnimatedElements = $(destination.item).find('.animated:not(.delayed)');
                 let delay = 0;
                 for (const element of nextAnimatedElements) {
                     $(element).delay(delay)
@@ -124,7 +136,10 @@ $(document).ready(function() {
                     delay += 100;
                 }
             }
-        }
+        },
+        afterRender: setTimeout(function() {
+                        animateLogo();
+                    }, 1000)
     });
     
     //methods
@@ -167,7 +182,6 @@ $(document).ready(function() {
     for (const canvas of canvasArray) {
         contextArray.push(canvas.getContext('2d'));
     }
-    // let context = canvas.getContext('2d');
     console.dir(contextArray);
     
     let vw = getDocumentWidth() / 2,
@@ -211,9 +225,12 @@ $(document).ready(function() {
         drawDots(canvas.getContext('2d'));
     }
 
-    setTimeout(function() {
-        animateLogo();
-    }, 1000);
+    if (getDocumentWidth() <= 768) {
+        setTimeout(function() {
+            animateLogo();
+        }, 1000);
+        animateLogoExcerpt();
+    }
       
 
 });
