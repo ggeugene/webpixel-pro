@@ -104,9 +104,11 @@ $(document).ready(function() {
                 },300);
                 sec += 100;
             }
+            $('.sidebar canvas').delay(sec).animate({'opacity': 1});
             $('.menu-text').text('Закрыть');
             $('.menu-text + .material-icons').text('close');
         } else {
+            $('.sidebar canvas').animate({'opacity': 0})
             for(let list of menuItemsArray) {
                 $(list).animate({
                     'opacity': 0,

@@ -604,6 +604,9 @@ input[type="text"]:active {
 .modal button.close:hover i {
     color: #000000;
 }
+.sidebar canvas {
+    opacity: 0;
+}
 .canvas-right,
 .canvas-left {
     position: absolute;
