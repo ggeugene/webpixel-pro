@@ -90,6 +90,26 @@ main::before {
     width: 50%;
     transform: skew(0deg, -30deg);
 }
+.cls-1{
+    fill:#00adee;
+    stroke: #00adee;
+}
+.cls-2 {
+    fill:#fff;
+    stroke: #fff;
+}
+.cls-3 {
+    fill:#231f20;
+    stroke: #231f20;
+}
+.cls-4 {
+    fill:#f05a28;
+    stroke: #f05a28;
+}
+#splash svg > * {
+    stroke-width: 1px;
+    opacity: 0;
+}
 .logo-bg {
     fill:#00aeef;
 }
@@ -107,6 +127,7 @@ main::before {
 }
 .full-logo-container svg {
     width: 40%;
+    /* opacity: 0; */
 }
 .section-heading {
     font-size: 4rem;

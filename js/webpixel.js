@@ -6,6 +6,46 @@ function getDocumentHeight() {
     return Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 };
 
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function animateLogo() {
+    let tmax_optionsGlobal = {
+        repeat: 0,
+        repeatDelay: 0.65,
+        yoyo: true
+    };
+      
+    CSSPlugin.useSVGTransformAttr = true;
+      
+    let tl = new TimelineMax(tmax_optionsGlobal),
+        path = '.logo-svg *',
+        stagger_val = 0.0125,
+        duration = 2;
+      
+    $.each($(path), function(i, el) {
+        tl.set($(this), {
+          x: '+=' + getRandom(-500, 500),
+          y: '+=' + getRandom(-500, 500),
+          rotation: '+=' + getRandom(-720, 720),
+          scale: 0,
+          opacity: 0
+        });
+    });
+      
+    let stagger_opts_to = {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        ease: Power4.easeInOut
+    };
+      
+    tl.staggerTo(path, duration, stagger_opts_to, stagger_val);
+}
+
 function initGoogleMap() {
     // The location
     let icon = {
@@ -170,5 +210,10 @@ $(document).ready(function() {
     for (const canvas of canvasArray) {
         drawDots(canvas.getContext('2d'));
     }
+
+    setTimeout(function() {
+        animateLogo();
+    }, 1000);
+      
 
 });
