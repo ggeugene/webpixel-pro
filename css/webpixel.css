@@ -120,7 +120,7 @@ main::before {
     fill:#ff8100;
 }
 .logo-excerpt {
-    font-size: 5rem;
+    font-size: 4.15vw;
     font-weight: 200;
     color: #4E4E4E;
     margin-bottom: 0;
@@ -130,13 +130,13 @@ main::before {
     /* opacity: 0; */
 }
 .section-heading {
-    font-size: 4rem;
+    font-size: 7.15vh;
     line-height: 1;
 }
 .tab-heading,
 .carousel-item-heading,
 .carousel-item-year {
-    font-size: 2.25rem;
+    font-size: 4vh;
 }
 .carousel-item-heading,
 .carousel-item-year {
@@ -149,24 +149,24 @@ main::before {
     line-height: 1.2;
 }
 .carousel-item-month {
-    font-size: 0.88rem;
+    font-size: 1.57vh;
     color: #C7C7C7;
     font-weight: 800;
     /* margin-bottom: 0; */
 }
 .tab-subheading {
-    font-size: 1.75rem;
+    font-size: 3.13vh;
 }
 .blue-text {
     color: #00AEEF;
 }
 p,
 .tab-pane {
-    font-size: 1.13rem;
+    font-size: 2vh;
     line-height: 1.6;
 }
 .btn {
-    font-size: 1.13rem;
+    font-size: 2vh;
     font-weight: bold;
     letter-spacing: 3px;
 }
@@ -210,8 +210,8 @@ p,
 }
 .logo-container {
     position: absolute;
-    left: 2rem;
-    top: 2rem;
+    left: 1.666vw;
+    top: 1.666vw;
 }
 .menu-container {
     position: absolute;
@@ -285,7 +285,7 @@ p,
     padding-inline-start: 0px;
 }
 .social-link {
-    font-size: 1.25rem;
+    font-size: 1vw;
     color: #9B9B9B;
     transition: color 0.15s ease-in-out;
 }
@@ -297,14 +297,14 @@ p,
     transition: background-color 0.15s ease-in-out;
 }
 .advantage-icon i {
-    font-size: 3rem;
+    font-size: 5.35vh;
 }
 .advantage-header {
-    font-size: 1.13rem;
+    font-size: 2vh;
     line-height: 1;
 }
 .advantage-text {
-    font-size: 0.88rem;
+    font-size: 1.57vh;
     line-height: 1.4;
     margin-bottom: 0;
 }
@@ -356,12 +356,12 @@ p,
     border-radius: 50px;
     margin-right: 0;
     display: flex;
-    height: 75px;
-    width: 75px;
+    height: 4vw;
+    width: 4vw;
     transition: 0.15s ease-in-out;
 }
 .tabs-left i {
-    font-size: 1.63rem;
+    font-size: 1.5vw;
 }
 .tab-image {
     background-image: url('../img/tab_image-1.jpg');
@@ -471,7 +471,7 @@ p,
     padding-inline-start: 50px;
 }
 .contact-list-item {
-    font-size: 1.5rem;
+    font-size: 2.68vh;
     line-height: 1.2;
     margin-bottom: 30px;
     position: relative;
@@ -485,7 +485,7 @@ p,
 .contact-mail::before {
     position: absolute;
     font-family: 'Material Icons';
-    font-size: 1.88rem;
+    font-size: 3.35vh;
     color: #00AEEF;
     left: -50px;
 }
@@ -511,16 +511,16 @@ input[type="text"] {
     color: #000000;
     border: 1px solid #000000;
     max-width: 260px;
-    font-size: 1.13rem;
-    padding: 17px 17px 17px 50px;
+    font-size: 2vh;
+    padding: 1.9vh 1.9vh 1.9vh 5.6vh;
     margin-bottom: 30px;
 }
 input[type="submit"] {
     max-width: 260px;
-    font-size: 1.13rem;
+    font-size: 2vh;
     letter-spacing: 3px;
     font-weight: bold;
-    padding: 17px;
+    padding: 1.9vh;
     background-color: #FF8100;
     color: #ffffff;
     border: none;
@@ -534,13 +534,13 @@ input[type="text"]:active {
     background-image: url('../img/user-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: left 20px top 20px;
+    background-position: left 2.23vh top 2.3vh
 }
 .input-mail {
     background-image: url('../img/envelope-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: left 18px top 22px;
+    background-position: left 2vh top 2.46vh;
 }
 #fp-nav ul {
     margin-right: 3rem;
