@@ -107,9 +107,9 @@ $(document).ready(function() {
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
 	    navigation: true,
         navigationPosition: 'right',
-        parallax: true,
-        parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
-        responsiveWidth: 768,
+        // parallax: true,
+        // parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+        responsiveWidth: 769,
         onLeave: function(origin, destination, direction) {
             let prevAnimatedElements = $(origin.item).find('.animated:not(.delayed)');
             if(prevAnimatedElements) {
@@ -117,13 +117,17 @@ $(document).ready(function() {
                     $(element).animate({'opacity': 0}, 300);
                 }
             }
-            if(origin.index == 0) {
-                $('.sidebar').addClass('show-sb');
-                $('main').removeClass('fullwidth');
-            } else if (destination.index == 0) {
-                $('.sidebar').removeClass('show-sb');
-                $('main').addClass('fullwidth');
-            }
+            if(getDocumentWidth() > 768) {
+                if(origin.index == 0) {
+                    $('.sidebar').addClass('show-sb');
+                    $('main').removeClass('fullwidth');
+                } else if (destination.index == 0) {
+                    $('.sidebar').removeClass('show-sb');
+                    $('main').addClass('fullwidth');
+                }
+            } else if (direction == 'up')
+                        $('.sidebar').addClass('show-sb');
+                    else $('.sidebar').removeClass('show-sb');
         },
         afterLoad: function(origin, destination, direction) {
             if(destination.item) {
