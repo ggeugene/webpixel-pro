@@ -877,4 +877,7 @@ input[type="text"]:active {
         left: 0;
         right: 0;
     }
+    .carousel-item-container.row {
+        margin-left: 0;
+    }
 }

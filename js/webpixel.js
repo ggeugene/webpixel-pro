@@ -65,11 +65,16 @@ function initGoogleMap() {
     };
     let pos = {lat: 48.466741, lng: 35.050695};
     let center = {lat: 48.466925, lng: 35.045921};
+    let zoom = 17;
 
+    if(getDocumentWidth() < 768) {
+        center.lat = pos.lat;
+        center.lng = pos.lng;
+    }
     // The map, centered
     let map = new google.maps.Map(
         document.getElementById('googlemap'), {
-            zoom: 17,
+            zoom: zoom,
             center: center,
             disableDefaultUI: true,
             animation:  google.maps.Animation.DROP,
@@ -85,7 +90,6 @@ function initGoogleMap() {
   }
 
 $(document).ready(function() {
-    console.log(document.documentElement.clientWidth +'\n' + window.innerWidth);
 
     initGoogleMap();
 
@@ -198,7 +202,6 @@ $(document).ready(function() {
     for (const canvas of canvasArray) {
         contextArray.push(canvas.getContext('2d'));
     }
-    console.dir(contextArray);
     
     let vw = getDocumentWidth() / 2,
         vh = getDocumentHeight() * 3/4;
