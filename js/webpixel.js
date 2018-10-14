@@ -85,30 +85,42 @@ function initGoogleMap() {
   }
 
 $(document).ready(function() {
+    console.log(document.documentElement.clientWidth +'\n' + window.innerWidth);
 
     initGoogleMap();
 
     //Projects slider
-    $('#lightSlider').lightSlider({
-        item: 2.5,
-        vertical: true,
-        loop: false,
-        move: 1,
-        verticalHeight: 550,
-        pager: false,
-        controls: false
-    });
+    if(getDocumentWidth() > 768) {
+        $('#lightSlider').lightSlider({
+            item: 2.5,
+            vertical: true,
+            loop: false,
+            move: 1,
+            verticalHeight: 550,
+            pager: false,
+            controls: false
+        });
+    } else {
+        $('#lightSlider').lightSlider({
+            item: 1,
+            vertical: false,
+            loop: false,
+            move: 1,
+            verticalHeight: 550,
+            pager: false,
+            controls: false
+        });
+    }
+    
 
     //Fullpage scroll
     new fullpage('#fullscreen', {
         //options here
-        autoScrolling:true,
-        scrollHorizontally: true,
+        // autoScrolling:true,
+        // scrollHorizontally: true,
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
 	    navigation: true,
         navigationPosition: 'right',
-        // parallax: true,
-        // parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
         responsiveWidth: 769,
         onLeave: function(origin, destination, direction) {
             let prevAnimatedElements = $(origin.item).find('.animated:not(.delayed)');
