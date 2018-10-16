@@ -513,7 +513,7 @@ p,
     top: -6px;
 }
 .contact-list-item a:hover {
-    color: #00AEEF;
+    color: #ff8100;
     text-decoration: none;
 }
 input[type="text"] {
@@ -871,12 +871,12 @@ input[type="text"]:active {
     .section-heading {
         font-size: 4vh;
     }
-    .canvas-right {
+    /* .canvas-right {
         right: 0;
     }
     .canvas-left {
         left: 0;
-    }
+    } */
     #services .no-gutters {
         margin: 0;
     }
@@ -889,5 +889,85 @@ input[type="text"]:active {
     }
     .carousel-item-container.row {
         margin-left: 0;
+    }
+    .btn {
+        letter-spacing: 0;
+    }
+    .callback-button {
+        right: 25px;
+        bottom: 25px;
+        height: 50px;
+        width: 50px;
+    }
+    .callback-button i {
+        font-size: 26px;
+    }
+    .chevron {
+        left: 47%;
+    }
+    .canvas-right {
+        top: 14.5%;
+    }
+    section:not(#splash) canvas {
+        display: none;
+    }
+    .carousel-item-container:not(:first-child) .col-md-4::before,
+    #projects .section-heading::before,
+    #projects .section-heading::after {
+        display: none;
+    }
+    #projects .section-heading {
+        padding-bottom: 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    .carousel-item-heading {
+        margin-top: 0.5rem;
+    }
+    .googlemap {
+        margin-top: 2rem;
+    }
+    .advantage-block {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    .advantage-header {
+        margin: 1rem 0 !important;
+    }
+    .tab-content .py-5 {
+        padding: 0.5rem 0 !important;
+    }
+    #partners .row > .col {
+        flex-basis: 33.33334%;
+        max-width: 33.33334%;
+        padding: 2px;
+    }
+    #about .section-heading {
+        margin-top: 1.5rem;
+    }
+    #about .text-left {
+        margin-bottom: 1.5rem !important;
+    }
+    #advantages .section-heading {
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    #partners .section-heading.my-5 {
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem !important;
+    }
+    #partners .row.no-gutters {
+        margin-bottom: 1.5rem !important;
+    }
+    input[type="text"] {
+        padding: 14px 14px 14px 40px;
+    }
+    input[type="submit"] {
+        padding: 14px;
+    }
+    .input-name {
+        background-position: left 13px top 15px;
+    }
+    .input-mail {
+        background-position: left 12px top 17px;
     }
 }
