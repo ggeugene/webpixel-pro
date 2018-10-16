@@ -713,6 +713,16 @@ input[type="text"]:active {
     margin-inline-end: 0px;
     padding-inline-start: 0px;
 }
+.carousel-item-link {
+    color: #000000;
+    transition: color 0.15s ease-in-out;
+}
+.carousel-item-link:hover,
+.carousel-item-link:active,
+.carousel-item-link:focus {
+    text-decoration: none;
+    color: #ff8100;
+}
 
 @-webkit-keyframes shadow-pulse
 {
