@@ -196,6 +196,32 @@ $(document).ready(function() {
         
     });
 
+    //Mobile menu animation
+    $('.hamburger').on('click', function() {
+        $(this).toggleClass('open');
+        $('.menu-list-container').toggleClass('show');
+        let menuItemsArray = $('.menu-list-item');
+
+        if($('.menu-list-container').hasClass('show')) {
+            let sec = 100;
+            for(let list of menuItemsArray) {
+                $(list).delay(sec).animate({
+                    'opacity': 1,
+                    'left': 0
+                },300);
+                sec += 100;
+            }
+        } else {
+            for(let list of menuItemsArray) {
+                $(list).animate({
+                    'opacity': 0,
+                    'left': '-150px'
+                },300);
+            }
+        }
+
+    });
+
     //Canvas
     let canvasArray = document.getElementsByTagName('canvas');
     let contextArray = [];
