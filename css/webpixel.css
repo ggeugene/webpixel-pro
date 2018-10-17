@@ -825,8 +825,6 @@ input[type="text"]:active {
     }
     .hamburger {
         display: block;
-        /* flex-direction: column; */
-        /* justify-content: center; */
         position: absolute;
         top: 19px;
         left: 18px;
@@ -1022,5 +1020,22 @@ input[type="text"]:active {
     }
     .menu-list-container.show {
         left: 0;
+    }
+    .tabs-left {
+        margin-left: -15px;
+        margin-right: -15px;
+        padding: 0 10px;
+        height: 60px;
+    }
+    .tabs-left>li>a {
+        height: 10vw;
+        width: 10vw;
+        border-radius: 0;
+    }
+    .tabs-left>li:not(:last-child) {
+        margin-bottom: 0;
+    }
+    .tabs-left i {
+        font-size: 5vw;
     }
 }
