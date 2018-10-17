@@ -1,4 +1,13 @@
-@import url('../font/stylesheet.css');
+/*
+ Theme Name:   WebPixel
+ Description:  Twenty Seventeen Child Theme
+ Author:       ggeugene
+ Template:     twentyseventeen
+ Version:      1.0.0
+ Text Domain:  webpixel
+*/
+
+@import url('font/stylesheet.css');
 ::selection {
     background: #FF8100;
     color: #ffffff; /* WebKit/Blink Browsers */
@@ -25,7 +34,7 @@ img {
     max-width: 100%;
 }
 main {
-    background-image: url('../img/background.jpg');
+    background-image: url('img/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -372,7 +381,7 @@ p,
     font-size: 1.5vw;
 }
 .tab-image {
-    background-image: url('../img/tab_image-1.jpg');
+    background-image: url('img/tab_image-1.jpg');
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -542,13 +551,13 @@ input[type="text"]:active {
     border-color: #FF8100;
 }
 .input-name {
-    background-image: url('../img/user-icon.png');
+    background-image: url('img/user-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left 2.23vh top 2.3vh
 }
 .input-mail {
-    background-image: url('../img/envelope-icon.png');
+    background-image: url('img/envelope-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
     background-position: left 2vh top 2.46vh;
