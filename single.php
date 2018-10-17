@@ -1,6 +1,5 @@
 <?php
 
-
 get_header(); ?>
 
 <main role="main" class="col-md-11 col-12 fullwidth">
@@ -13,4 +12,4 @@ get_header(); ?>
     </div>
 </main>
 
-<?php get_footer(); ?>
+<?php get_footer();
