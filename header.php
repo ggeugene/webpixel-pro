@@ -14,3 +14,4 @@
 <body>
 <div class="container-fluid">
         <div class="row">
+                <?php clean_custom_menus() ?>
