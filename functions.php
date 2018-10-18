@@ -3,21 +3,13 @@
 
 function webpixel_enqueue_styles() {
 
-    wp_register_script( 'gmaps','https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fe5KeWRuLOz7JcolFCRz2Xlu24-qEsg', array(), '', false);
-    wp_register_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'), '', false);
-    wp_register_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.min.js', array ('jquery'), '', false);
-    wp_register_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'), '', false);
-    wp_register_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array('jquery'), '', false);
-    wp_register_script( 'Twinmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array('jquery'), '', false);
-    wp_register_script( 'webpixeljs', get_stylesheet_directory_uri() . '/js/webpixel.js', array('jquery'), '', false);
-
-    wp_enqueue_script('gmaps');
-    wp_enqueue_script('fullpage-easing');
-    wp_enqueue_script('fullpage-min');
-    wp_enqueue_script('fullpage-ext');
-    wp_enqueue_script('lightslider');
-    wp_enqueue_script('Twinmax');
-    wp_enqueue_script('webpixeljs');
+    wp_enqueue_script( 'gmaps','https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fe5KeWRuLOz7JcolFCRz2Xlu24-qEsg', array());
+    wp_enqueue_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'));
+    wp_enqueue_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.min.js', array ('jquery'));
+    wp_enqueue_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'));
+    wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array('jquery'));
+    wp_enqueue_script( 'Twinmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array('jquery'));
+    wp_enqueue_script( 'webpixeljs', get_stylesheet_directory_uri() . '/js/webpixel.js', array('jquery'));
 
     wp_enqueue_style('lightslider', get_stylesheet_directory_uri() . '/css/lightslider.css');
     wp_enqueue_style('fullpage', get_stylesheet_directory_uri() . '/css/fullpage.min.css');

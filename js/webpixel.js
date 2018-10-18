@@ -60,7 +60,7 @@ function animateLogoExcerpt() {
 function initGoogleMap() {
     // The location
     let icon = {
-        url: '/home/yme/xampp/htdocs/webpixel/wp-content/themes/webpixel/js/webpixel.js',
+        url: '/webpixel/wp-content/themes/webpixel/img/location.svg',
         scale: 0.6
     };
     let pos = {lat: 48.466741, lng: 35.050695};
