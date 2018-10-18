@@ -24,8 +24,8 @@ function animateLogo() {
         stagger_val = 0.0125,
         duration = 2;
       
-    $.each($(path), function(i, el) {
-        tl.set($(this), {
+    jQuery.each(jQuery(path), function(i, el) {
+        tl.set(jQuery(this), {
           x: '+=' + getRandom(-500, 500),
           y: '+=' + getRandom(-500, 500),
           rotation: '+=' + getRandom(-720, 720),
@@ -48,10 +48,10 @@ function animateLogo() {
 
 function animateLogoExcerpt() {
 
-        let animatedElements = $('#splash').find('.animated.delayed');
+        let animatedElements = jQuery('#splash').find('.animated.delayed');
         let delay = 3000;
         for (const element of animatedElements) {
-            $(element).delay(delay)
+            jQuery(element).delay(delay)
                 .animate({'opacity': 1}, 1000 );
             delay += 500;
         }
@@ -89,7 +89,7 @@ function initGoogleMap() {
     });
   }
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 
     initGoogleMap();
 
