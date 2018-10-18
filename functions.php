@@ -2,29 +2,26 @@
 
 
 function webpixel_enqueue_styles() {
+    if(!is_admin()) {
+        wp_enqueue_script( 'gmaps','https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fe5KeWRuLOz7JcolFCRz2Xlu24-qEsg', array());
+        wp_enqueue_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'));
+        wp_enqueue_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.min.js', array ('jquery'));
+        wp_enqueue_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'));
+        wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array('jquery'));
+        wp_enqueue_script( 'Twinmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array('jquery'));
+        wp_enqueue_script( 'webpixeljs', get_stylesheet_directory_uri() . '/js/webpixel.js', array('jquery'));
 
-    wp_enqueue_script( 'gmaps','https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fe5KeWRuLOz7JcolFCRz2Xlu24-qEsg', array());
-    wp_enqueue_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'));
-    wp_enqueue_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.min.js', array ('jquery'));
-    wp_enqueue_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'));
-    wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array('jquery'));
-    wp_enqueue_script( 'Twinmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array('jquery'));
-    wp_enqueue_script( 'webpixeljs', get_stylesheet_directory_uri() . '/js/webpixel.js', array('jquery'));
+        wp_enqueue_style('lightslider', get_stylesheet_directory_uri() . '/css/lightslider.css');
+        wp_enqueue_style('fullpage', get_stylesheet_directory_uri() . '/css/fullpage.min.css');
+        wp_enqueue_style('bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
+        wp_enqueue_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
+        wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
 
-    wp_enqueue_style('lightslider', get_stylesheet_directory_uri() . '/css/lightslider.css');
-    wp_enqueue_style('fullpage', get_stylesheet_directory_uri() . '/css/fullpage.min.css');
-    wp_enqueue_style('bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
-    wp_enqueue_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
-    wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
-
-    // $parent_style = 'twentyseventeen-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
-
-    // wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-    add_action( 'wp_enqueue_scripts', 'enqueue_parent_theme_style');
-    function enqueue_parent_theme_style() {
-        wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+        add_action( 'wp_enqueue_scripts', 'enqueue_parent_theme_style');
+        function enqueue_parent_theme_style() {
+            wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+        }
     }
-
 }
 add_action( 'wp_enqueue_scripts', 'webpixel_enqueue_styles' );
 
@@ -70,5 +67,128 @@ function clean_custom_menus() {
 	}
 	echo $menu_list;
 }
+
+function project_custom_post_type() {
+    $args['post-type-project'] = array(
+          'labels' => array(
+              'name' => __( 'Projects', 'webpixel' ),
+              'singular_name' => __( 'Project Item', 'webpixel' ),
+              'all_items' => 'Projects',
+              'add_new' => __( 'Add New', 'webpixel' ),
+              'add_new_item' => __( 'Add New Project Item', 'webpixel' ),
+              'edit_item' => __( 'Edit Project', 'webpixel' ),
+              'new_item' => __( 'New Project', 'webpixel' ),
+              'view_item' => __( 'View Project', 'webpixel' ),
+              'search_items' => __( 'Search Projects', 'webpixel' ),
+              'not_found' => __( 'No projects found', 'webpixel' ),
+              'not_found_in_trash' => __( 'No projects found in Trash', 'webpixel' ),
+              'parent_item_colon' => __( 'Parent Projects:', 'webpixel' ),
+              'menu_name' => __( 'Projects', 'webpixel' ),
+          ),
+          'hierarchical' => true,
+          'description' => 'Add your Projects',
+          'supports' => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
+          'taxonomies' => array('project_cats'),
+          'menu_icon' => 'dashicons-screenoptions',
+          'show_ui' => true,
+          'public' => true,
+          'publicly_queryable' => true,
+          'exclude_from_search' => false,
+          'capability_type' => 'post',
+          'query_var' => 'project',
+          'menu_position' => 20,
+          'rewrite' => array('slug' => 'project', 'with_front' => true)
+          );
+  
+    register_post_type('project', $args['post-type-project']);
+  
+    $taxonomies = array();
+  
+    $taxonomies['taxonomy-project_cats'] = array(
+      'labels' => array(
+        'name' => __( 'Project Categories', 'webpixel' ),
+        'singular_name' => __( 'Project Category', 'webpixel' ),
+        'search_items' =>  __( 'Search Project Categories', 'webpixel' ),
+        'all_items' => __( 'All Project Categories', 'webpixel' ),
+        'parent_item' => __( 'Parent Project Category', 'webpixel' ),
+        'parent_item_colon' => __( 'Parent Project Category:', 'webpixel' ),
+        'edit_item' => __( 'Edit Project Category', 'webpixel' ),
+        'update_item' => __( 'Update Project Category', 'webpixel' ),
+        'add_new_item' => __( 'Add New Project Category', 'webpixel' ),
+        'new_item_name' => __( 'New Project Category Name', 'webpixel' ),
+        'choose_from_most_used'	=> __( 'Choose from the most used project categories', 'webpixel' )
+      ),
+      'hierarchical' => true,
+      // 'orderby' => 'slug',
+      'query_var' => true,
+      'rewrite' => array( 'slug' => 'projects' )
+    );
+  
+    /* Register taxonomy: name, cpt, arguments */
+    register_taxonomy('project_cats', array('project'), $taxonomies['taxonomy-project_cats']);
+    register_taxonomy_for_object_type('project_cats', 'project');
+  }
+  
+add_action( 'init', 'project_custom_post_type', 0 );
+
+function webpixel_project_slider_shortcode( $atts ) {
+
+    $a = shortcode_atts( array(
+       'slug' => 'all'
+    ), $atts );
+
+    $string = '';
+
+    $args = array(
+      'posts_per_page' => -1,
+      'paged' => -1,
+      'meta_key' => 'project_type',
+      'orderby' => 'date',
+      'order' => 'DESC',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'project_cats',
+          'field' => 'slug',
+          'terms' => $a['slug']
+        )
+      )
+    );
+
+    $query = new WP_Query($args);
+
+    if($query->have_posts()) { 
+
+        $string .= '<ul id="lightSlider">';
+
+        foreach($query->posts as $post) {
+            $string .= '<li class="carousel-item-container row flex-column flex-md-row ">';
+            $string .= '<div class="col-12 col-md-1 align-self-center mb-2 mb-md-0">';
+            $string .= '<p class="carousel-item-year text-center text-md-right mb-0">' . get_field('year', $post->ID) . '</p>';
+            $string .= '<p class="carousel-item-month text-center text-md-right mb-0">' . get_field('month', $post->ID) . '</p>';
+            $string .= '</div';
+            $string .= '<div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-2 mb-md-0">';
+            $string .= '<div class="carousel-item-image-container">';
+            if(!empty(get_the_post_thumbnail_url($post->ID))) {
+                $string .= '<img class="carousel-item-image" src="' . get_the_post_thumbnail_url($post->ID) . '"/>';
+            } else {
+                $string .= '<img class="carousel-item-image" src="https://via.placeholder.com/300x200"/>';
+            }
+            $string .= '</div></div>';
+            $string .= '<div class="col-12 col-md-7 align-self-center mb-2 mb-md-0">';
+            $string .= '<a href="' . get_the_permalink($post->ID) . '" class="carousel-item-link">';
+            $string .= '<p class="carousel-item-heading text-uppercase">' . get_the_title( $post->ID) . '</p></a>';
+            $string .= '<p class="carousel-item-excerpt text-uppercase">' . get_field('excerpt', $post->ID) . '</p>';
+            $string .= '</div></li>';
+        }
+
+        $string .= '</ul>';
+
+    }
+
+    return $string;
+
+}
+
+add_shortcode( 'projects_slider', 'webpixel_project_slider_shortcode' );
 
 ?>
