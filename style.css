@@ -725,6 +725,14 @@ input[type="text"]:active {
     text-decoration: none;
     color: #ff8100;
 }
+.project-images img {
+    width: 100%;
+    height: auto;
+    padding-bottom: 15px;
+}
+.project-images p {
+    margin-bottom: 0;
+}
 
 @-webkit-keyframes shadow-pulse
 {

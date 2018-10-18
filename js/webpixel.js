@@ -90,8 +90,10 @@ function initGoogleMap() {
   }
 
 jQuery(document).ready(function($) {
-
-    initGoogleMap();
+    // console.dir($('#googlemap'));
+    if(document.getElementById('googlemap')) {
+        initGoogleMap();
+    }
 
     //Projects slider
     if(getDocumentWidth() > 768) {
@@ -126,6 +128,8 @@ jQuery(document).ready(function($) {
 	    navigation: true,
         navigationPosition: 'right',
         responsiveWidth: 769,
+        scrollOverflow: true,
+        normalScrollElements: '.project-images p img',
         onLeave: function(origin, destination, direction) {
             let prevAnimatedElements = $(origin.item).find('.animated:not(.delayed)');
             if(prevAnimatedElements) {
@@ -133,7 +137,7 @@ jQuery(document).ready(function($) {
                     $(element).animate({'opacity': 0}, 300);
                 }
             }
-            if(getDocumentWidth() > 768) {
+            if(getDocumentWidth() > 768 && $('.project-content').length < 1) {
                 if(origin.index == 0) {
                     $('.sidebar').addClass('show-sb');
                     $('main').removeClass('fullwidth');
@@ -141,7 +145,8 @@ jQuery(document).ready(function($) {
                     $('.sidebar').removeClass('show-sb');
                     $('main').addClass('fullwidth');
                 }
-            } else if (direction == 'up')
+            } 
+            else if (direction == 'up')
                         $('.sidebar').addClass('show-sb');
                     else $('.sidebar').removeClass('show-sb');
         },
@@ -160,10 +165,14 @@ jQuery(document).ready(function($) {
         afterRender: setTimeout(function() {
                         animateLogo();
                     }, 1000)
+                    
     });
+    if($('.project-content').length > 0) {
+        $('.sidebar').addClass('show-sb');
+    }
     
     //methods
-    fullpage_api.setAllowScrolling(true);
+    // fullpage_api.setAllowScrolling(true);
 
     //Sidebar animation
     $('.menu-container').on('click', function() {
