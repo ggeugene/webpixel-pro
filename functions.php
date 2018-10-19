@@ -98,6 +98,7 @@ function project_custom_post_type() {
           'capability_type' => 'post',
           'query_var' => 'project',
           'menu_position' => 20,
+          'has_archive' => true,
           'rewrite' => array('slug' => 'projects', 'with_front' => true)
           );
   
@@ -143,7 +144,6 @@ function webpixel_project_slider_shortcode( $atts ) {
     $args = array(
       'posts_per_page' => -1,
       'paged' => -1,
-      'meta_key' => 'project_type',
       'orderby' => 'date',
       'order' => 'DESC',
       'tax_query' => array(
@@ -166,9 +166,9 @@ function webpixel_project_slider_shortcode( $atts ) {
             $string .= '<div class="col-12 col-md-1 align-self-center mb-2 mb-md-0">';
             $string .= '<p class="carousel-item-year text-center text-md-right mb-0">' . get_field('year', $post->ID) . '</p>';
             $string .= '<p class="carousel-item-month text-center text-md-right mb-0">' . get_field('month', $post->ID) . '</p>';
-            $string .= '</div';
+            $string .= '</div>';
             $string .= '<div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-2 mb-md-0">';
-            $string .= '<div class="carousel-item-image-container">';
+            $string .= '<div class="carousel-item-image-container text-center">';
             if(!empty(get_the_post_thumbnail_url($post->ID))) {
                 $string .= '<img class="carousel-item-image" src="' . get_the_post_thumbnail_url($post->ID) . '"/>';
             } else {
@@ -178,7 +178,7 @@ function webpixel_project_slider_shortcode( $atts ) {
             $string .= '<div class="col-12 col-md-7 align-self-center mb-2 mb-md-0">';
             $string .= '<a href="' . get_the_permalink($post->ID) . '" class="carousel-item-link">';
             $string .= '<p class="carousel-item-heading text-uppercase">' . get_the_title( $post->ID) . '</p></a>';
-            $string .= '<p class="carousel-item-excerpt text-uppercase">' . get_field('excerpt', $post->ID) . '</p>';
+            $string .= '<p class="carousel-item-excerpt">' . get_field('excerpt', $post->ID) . '</p>';
             $string .= '</div></li>';
         }
 

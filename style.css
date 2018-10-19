@@ -140,7 +140,7 @@ main::before {
 .tab-heading,
 .carousel-item-heading,
 .carousel-item-year {
-    font-size: 4vh;
+    font-size: 3.6vh;
 }
 .carousel-item-heading,
 .carousel-item-year {
@@ -157,6 +157,11 @@ main::before {
     color: #C7C7C7;
     font-weight: 800;
     /* margin-bottom: 0; */
+}
+.carousel-item-image-container,
+.carousel-item-image {
+    height: 100%;
+    width: auto;
 }
 .tab-subheading {
     font-size: 3.13vh;
