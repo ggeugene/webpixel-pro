@@ -32,7 +32,7 @@ function clean_custom_menus() {
 		$menu = wp_get_nav_menu_object($locations[$menu_name]);
 		$menu_items = wp_get_nav_menu_items($menu->term_id);
 
-        $menu_list = '<nav class="sidebar bg-white">' ."\n";
+        $menu_list = '<nav class="sidebar bg-white show-mobile">' ."\n";
         $menu_list .= '<div class="sidebar-sticky d-md-flex flex-md-column justify-content-md-center align-items-md-center py-3">';
         $menu_list .= '<canvas class="canvas-right"></canvas>';
         $menu_list .= '<div class="hamburger"><span class="strip"></span><span class="strip"></span><span class="strip"></span></div>';
@@ -168,7 +168,7 @@ function webpixel_project_slider_shortcode( $atts ) {
             $string .= '<p class="carousel-item-month text-center text-md-right mb-0">' . get_field('month', $post->ID) . '</p>';
             $string .= '</div>';
             $string .= '<div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-2 mb-md-0">';
-            $string .= '<div class="carousel-item-image-container text-center">';
+            $string .= '<div class="carousel-item-image-container text-center d-flex align-items-center">';
             if(!empty(get_the_post_thumbnail_url($post->ID))) {
                 $string .= '<img class="carousel-item-image" src="' . get_the_post_thumbnail_url($post->ID) . '"/>';
             } else {

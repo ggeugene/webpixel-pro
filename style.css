@@ -755,6 +755,9 @@ input[type="text"]:active {
     margin-bottom: 0;
     font-weight: 800;
 }
+.carousel-item-excerpt {
+    margin-bottom: 0;
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -838,6 +841,7 @@ input[type="text"]:active {
 @media(max-width: 768px) {
     .sidebar {
         width: 100vw;
+        top: -60px;
         left: 0;
         right: 0;
         height: 60px;
@@ -1079,5 +1083,8 @@ input[type="text"]:active {
     }
     .project-title-container {
         max-width: 90%;
+    }
+    .sidebar.show-mobile {
+        top: 0;
     }
 }

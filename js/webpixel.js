@@ -145,9 +145,10 @@ jQuery(document).ready(function($) {
                     $('main').addClass('fullwidth');
                 }
             } 
-            // else if (direction == 'up')
-            //             $('.sidebar').addClass('show-sb');
-            //         else $('.sidebar').removeClass('show-sb');
+            else if(getDocumentWidth() <= 768 ) {
+                if(direction == 'up') $('.sidebar').addClass('show-mobile');
+                else $('.sidebar').removeClass('show-mobile');
+            }
         },
         afterLoad: function(origin, destination, direction) {
             if(destination.item) {
