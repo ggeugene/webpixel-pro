@@ -738,6 +738,23 @@ input[type="text"]:active {
 .project-images p {
     margin-bottom: 0;
 }
+.project-logo-container {
+    max-width: 12vw;
+    height: auto;
+}
+.project-title-container {
+    max-width: 60%;
+}
+.project-title {
+    font-size: 4vh;
+}
+.project-date-container {
+    margin-top: -0.5rem;
+}
+.project-date {
+    margin-bottom: 0;
+    font-weight: 800;
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -1059,5 +1076,8 @@ input[type="text"]:active {
     }
     .tabs-left i {
         font-size: 5vw;
+    }
+    .project-title-container {
+        max-width: 90%;
     }
 }

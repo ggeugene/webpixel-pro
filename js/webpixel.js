@@ -129,7 +129,6 @@ jQuery(document).ready(function($) {
         navigationPosition: 'right',
         responsiveWidth: 769,
         scrollOverflow: true,
-        normalScrollElements: '.project-images p img',
         onLeave: function(origin, destination, direction) {
             let prevAnimatedElements = $(origin.item).find('.animated:not(.delayed)');
             if(prevAnimatedElements) {
@@ -146,9 +145,9 @@ jQuery(document).ready(function($) {
                     $('main').addClass('fullwidth');
                 }
             } 
-            else if (direction == 'up')
-                        $('.sidebar').addClass('show-sb');
-                    else $('.sidebar').removeClass('show-sb');
+            // else if (direction == 'up')
+            //             $('.sidebar').addClass('show-sb');
+            //         else $('.sidebar').removeClass('show-sb');
         },
         afterLoad: function(origin, destination, direction) {
             if(destination.item) {

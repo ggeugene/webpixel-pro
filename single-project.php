@@ -17,12 +17,11 @@ get_header(); ?>
                     <div class="project-logo-container">
                         <img src="<?php the_field('project_logo')?>" class="project-logo"/>
                     </div>
-                    <div class="project-title-container">
-                        <h2 class="project-title"><?php the_title()?></h2>
+                    <div class="project-title-container text-center">
+                        <h2 class="project-title my-4 text-uppercase"><?php the_title()?></h2>
                     </div>
                     <div class="project-date-container">
-                        <p class="project-year"><?php the_field('year')?></p>
-                        <p class="project-month"><?php the_field('month')?></p>
+                        <p class="project-date"><?php the_field('month')?> <span class="project-year"><?php the_field('year')?></span></p>
                     </div>
                 </div>
             </div>
