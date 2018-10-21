@@ -20,7 +20,18 @@
                         <i class="material-icons">close</i>
                     </button>
                     <div class="modal-body align-items-center d-flex justify-content-center">
-                        <h2 class="section-heading text-uppercase">Modal callback</h2>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="section-heading text-uppercase text-center mb-4"><?php _e( 'Обратная связь', 'webpixel' ) ?><span class="blue-text">.</span></h2>
+                                </div>
+                            </div>
+                            <div class="row align-items-center justify-content-center">
+                                <div class="col-md-3 col-12">
+                                    <?php echo do_shortcode('[contact-form-7 id="55" title="Callback contact form RU"]'); ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +43,18 @@
                             <i class="material-icons">close</i>
                         </button>
                         <div class="modal-body align-items-center d-flex justify-content-center">
-                            <h2 class="section-heading text-uppercase">Modal brief</h2>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="section-heading text-uppercase text-center mb-4"><?php _e( 'Что вас интересует?', 'webpixel' ) ?></h2>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-12 col-md-6">
+                                    <?php echo do_shortcode('[contact-form-7 id="56" title="Brief contact form RU"]'); ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
