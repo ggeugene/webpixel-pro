@@ -185,8 +185,14 @@ p,
     border-color: #00AEEF;
     color: #00AEEF;
 }
+.btn-blue {
+    color: #ffffff !important;
+    background-color: #00AEEF;
+}
 [class*="btn-outline"]:hover,
-[class*="btn-outline"]:active {
+[class*="btn-outline"]:active,
+.btn-blue:hover,
+.btn-blue:active {
     border-color: #FF8100 !important;
     color: #ffffff !important;
     background-color: #FF8100 !important;
