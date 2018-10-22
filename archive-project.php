@@ -10,7 +10,7 @@ get_header(); ?>
 
 <main role="main" class="col-md-11 col-12 project-content">
     <div id="fullscreen">
-    <section id="projects" class="fullscreen-section section fp-auto-height-responsive">
+    <section id="projects" class="fullscreen-section section fp-auto-height-responsive projects-archive">
                         <div class="row align-items-center align-items-md-end h-100">
                             <div class="col-md-1"></div>
                             <div class="col-md-9 flex-sm-column flex-md-row animated">

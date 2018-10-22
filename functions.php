@@ -41,12 +41,12 @@ function clean_custom_menus() {
 		foreach ((array) $menu_items as $key => $menu_item) {
 			$title = $menu_item->title;
 			$url = $menu_item->url;
-			$menu_list .= "\t\t\t\t\t". '<li class="menu-list-item"><a href="'. $url .'">'. $title .'<span>.</span></a></li>' ."\n";
+			$menu_list .= "\t\t\t\t\t". '<li class="menu-list-item"><a href="'. $url .'" class="ajax-link">'. $title .'<span>.</span></a></li>' ."\n";
         }
         
         $menu_list .= "\t\t\t\t". '</ul>' ."\n" . '</div>';
         $menu_list .= '<div class="logo-container align-self-center">';
-        $menu_list .= '<a href="/" class="logo-link">
+        $menu_list .= '<a href="' . get_home_url() . '" class="logo-link">
         <img src="/webpixel/wp-content/themes/webpixel/img/logo_mini.png"/>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 663.773 127.419"><rect class="cls-1" width="343.656" height="127.419"/><g transform="translate(25.735)"><path class="cls-2" d="M124.007,7.6h11.3L107.688,80.411h-9.1L71.6,20.154,45.861,80.411h-9.1L8.2,7.6H19.184L41.153,61.894,64.691,7.6h13.5l25.107,54.294Z" transform="translate(-8.2 16.252)"/><path class="cls-2" d="M109.588,7.6a15.683,15.683,0,0,1,10.984,4.394,14.945,14.945,0,0,1,4.394,10.671V49.027H60.943v16.32a5.4,5.4,0,0,0,5.021,5.021h59V80.725h-59A15,15,0,0,1,50.9,65.661v-43A15,15,0,0,1,65.964,7.6ZM60.943,38.984H114.61V22.978a5.4,5.4,0,0,0-5.021-5.021H65.964a5.4,5.4,0,0,0-5.021,5.021V38.984Z" transform="translate(83.11 16.252)"/><path class="cls-2" d="M137.7,23.852a15,15,0,0,1,15.064,15.064V81.6A15,15,0,0,1,137.7,96.663h-59V0H89.057V23.852ZM142.724,81.6V38.916a5.4,5.4,0,0,0-5.021-5.021H94.078a5.04,5.04,0,0,0-3.452,1.569,4.369,4.369,0,0,0-1.569,3.452V81.6a5.4,5.4,0,0,0,5.021,5.021H137.7a5.4,5.4,0,0,0,5.021-5.021Z" transform="translate(142.558)"/><path d="M175.3,7.6a15,15,0,0,1,15.064,15.064V65.347A15,15,0,0,1,175.3,80.411H126.657v28.873H116.3V7.6Zm4.708,57.747V22.664a5.4,5.4,0,0,0-5.021-5.021H131.364a5.4,5.4,0,0,0-5.021,5.021V65.347a5.4,5.4,0,0,0,5.021,5.021h43.624a5.04,5.04,0,0,0,3.452-1.569A4,4,0,0,0,180.01,65.347Z" transform="translate(222.962 16.252)"/><path d="M143.4,80.411V7.6h10.357V80.411Z" transform="translate(280.913 16.252)"/><path d="M210.685,7.6h13.5L193.738,43.378,224.18,80.411h-13.5L186.833,51.224,163.3,80.411H149.8l30.443-37.033L149.8,7.6h13.5l23.538,27.618Z" transform="translate(294.599 16.252)"/><path d="M234.488,7.6a15.683,15.683,0,0,1,10.984,4.394,14.945,14.945,0,0,1,4.394,10.671V49.027H185.843v16.32a5.4,5.4,0,0,0,5.021,5.021h59V80.725h-59A15,15,0,0,1,175.8,65.661v-43A15,15,0,0,1,190.864,7.6ZM185.843,38.984H239.51V22.978a5.4,5.4,0,0,0-5.021-5.021H190.864a5.4,5.4,0,0,0-5.021,5.021Z" transform="translate(350.197 16.252)"/><path d="M202.7,0h10.357V81.6a5.4,5.4,0,0,0,5.021,5.021h12.24V96.977h-12.24a15,15,0,0,1-15.064-15.064V0Z" transform="translate(407.721)"/><rect class="cls-4" width="10.357" height="10.357" transform="translate(424.313 115.18)"/></g></svg>
         </a></div>';
@@ -176,7 +176,7 @@ function webpixel_project_slider_shortcode( $atts ) {
             }
             $string .= '</div></div>';
             $string .= '<div class="col-12 col-md-7 align-self-center mb-2 mb-md-0">';
-            $string .= '<a href="' . get_the_permalink($post->ID) . '" class="carousel-item-link">';
+            $string .= '<a href="' . get_the_permalink($post->ID) . '" class="carousel-item-link ajax-link">';
             $string .= '<p class="carousel-item-heading text-uppercase">' . get_the_title( $post->ID) . '</p></a>';
             $string .= '<p class="carousel-item-excerpt">' . get_field('excerpt', $post->ID) . '</p>';
             $string .= '</div></li>';

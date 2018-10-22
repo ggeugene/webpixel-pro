@@ -10,6 +10,82 @@ function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function initLightSlider() {
+    if(getDocumentWidth() > 768) {
+        jQuery('#lightSlider').lightSlider({
+            item: 2.5,
+            vertical: true,
+            loop: false,
+            move: 1,
+            verticalHeight: 550,
+            pager: false,
+            controls: false
+        });
+    } else {
+        jQuery('#lightSlider').lightSlider({
+            item: 1,
+            vertical: false,
+            loop: false,
+            move: 1,
+            verticalHeight: 550,
+            pager: false,
+            controls: false
+        });
+    }
+}
+
+function ajaxLoadContent(url) {
+    jQuery.ajax({
+        url: url,
+        type: 'GET',
+        beforeSend: function(){
+            if(getDocumentWidth() > 768) {
+                if(!jQuery('.sidebar').hasClass('opened')) {
+                    jQuery('.sidebar').toggleClass('opened');
+                }
+            }
+        },
+        success: function(data) {
+            if(data) {
+                let oldContent = jQuery('#fullscreen');
+                let newContent = jQuery(data).find('#fullscreen');
+                jQuery.fn.fullpage.destroy('all');
+                jQuery(oldContent).remove();
+                jQuery('main').append(newContent);
+                if(jQuery('#lightSlider').length > 0) initLightSlider();
+                if(jQuery('#googlemap').length > 0) initGoogleMap();
+                initFullPage();
+                if(getDocumentWidth() > 768) {
+                    let menuItemsArray = jQuery('.menu-list-item');
+                    jQuery('.sidebar canvas').animate({'opacity': 0})
+                    for(let list of menuItemsArray) {
+                        jQuery(list).animate({
+                            'opacity': 0,
+                            'left': '-150px'
+                        },300);
+                    }
+                    jQuery('.menu-text').text('Меню');
+                    jQuery('.menu-text + .material-icons').text('expand_more');
+                    jQuery('.sidebar').toggleClass('opened');
+                }
+            }
+        }
+    });
+}
+
+function isCurrentPageAnchor(url) {
+    if(url.includes('#')) {
+        url = url.slice(url.lastIndexOf('#')+1);
+        if(jQuery('[id=' + url + ']').length > 0) {
+            console.log(true);
+            return true;
+        } else return false;
+        
+    } else {
+        return false;
+    }
+}
+
 function initFullPage() {
         //Fullpage scroll
         jQuery('#fullscreen').fullpage({
@@ -49,7 +125,7 @@ function initFullPage() {
                         jQuery(element).animate({'opacity': 0}, 300);
                     }
                 }
-                if(getDocumentWidth() > 768 && jQuery('.project-content').length < 1) {
+                if(getDocumentWidth() > 768 && (jQuery('.project-single').length < 1 || jQuery('.projects-archive').length < 1)) {
                     if(index == 1) {
                         jQuery('.sidebar').addClass('show-sb');
                         jQuery('main').removeClass('fullwidth');
@@ -179,7 +255,22 @@ function initGoogleMap() {
   }
 
 jQuery(document).ready(function($) {
-    // console.dir($('#googlemap'));
+
+    let storedState, originState;
+    if($('.project-single').length > 1) {
+        originState = storedState = {
+            'pageType': 'project-single',
+            'href': jQuery(location).attr('href')
+        };
+    } else if($('.projects-archive').length > 1) {
+        originState = storedState = {
+            'pageType': 'project-archive',
+            'href': jQuery(location).attr('href')
+        };
+    } else originState = storedState = {'pageType': 'home', 'href': jQuery(location).attr('href')};
+
+    window.history.replaceState(originState, '', originState.url);
+
     if(document.getElementById('googlemap')) {
         initGoogleMap();
     }
@@ -187,36 +278,17 @@ jQuery(document).ready(function($) {
     initFullPage();
 
     //Projects slider
-    if(getDocumentWidth() > 768) {
-        $('#lightSlider').lightSlider({
-            item: 2.5,
-            vertical: true,
-            loop: false,
-            move: 1,
-            verticalHeight: 550,
-            pager: false,
-            controls: false
-        });
-    } else {
-        $('#lightSlider').lightSlider({
-            item: 1,
-            vertical: false,
-            loop: false,
-            move: 1,
-            verticalHeight: 550,
-            pager: false,
-            controls: false
-        });
-    }
-    
+    initLightSlider();
 
 
     if($('.project-content').length > 0) {
         $('.sidebar').addClass('show-sb');
     }
     
-    //methods
-    // fullpage_api.setAllowScrolling(true);
+    $('.chevron').on('click', function() {
+        $.fn.fullpage.moveSectionDown();
+    });
+
 
     //Sidebar animation
     $('.menu-container').on('click', function() {
@@ -330,10 +402,56 @@ jQuery(document).ready(function($) {
         animateLogoExcerpt();
     }
     
-    $('.full-logo-container').on('click', function() {
-        $.fn.fullpage.destroy('all');
-        initFullPage();
-        // fullpage_api.reBuild();
+    $('a.ajax-link').on('click', function(e) {
+        
+        let url = $(this).attr('href');
+        // let newState;
+        // console.log(url);
+        // debugger;
+        if(!isCurrentPageAnchor(url)) {
+            e.preventDefault();
+            ajaxLoadContent(url);
+            if(url.slice(-'projects'.length) === 'projects' || url.slice(-'projects/'.length) === 'projects/') {
+                storedState = {
+                    'pageType': 'project-archive',
+                    'href': url
+                };
+            } else if(url.includes('projects')) {
+                storedState = {
+                    'pageType': 'project-single',
+                    'href': url
+                };
+            } else storedState = {
+                'pageType': 'home',
+                'href': url
+            };
+            window.history.pushState(storedState, '', url);
+        }
+        
+    });
+
+    $(window).on('popstate', function(e) {
+        
+        let prevState, url;
+
+        if(history.state == null) {
+            prevState = storedState;
+        } else {
+            prevState = history.state;
+        }
+
+        if(prevState) {
+            url = prevState.href;
+        }
+        if(!isCurrentPageAnchor(url)) {
+            e.preventDefault();
+            ajaxLoadContent(url);
+        }
+
+        if(prevState) {
+            storedState = prevState;
+          }
+
     });
 
 });

@@ -26,7 +26,7 @@ get_header(); ?>
                 </div>
             </div>
         </section>
-        <section class="section project-images fp-auto-height-responsive">
+        <section class="section project-single fp-auto-height-responsive">
             <div class="row">
                 <div class="col-12">
                     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
