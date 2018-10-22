@@ -5,15 +5,15 @@ function webpixel_enqueue_styles() {
     if(!is_admin()) {
         wp_enqueue_script( 'gmaps','https://maps.googleapis.com/maps/api/js?key=AIzaSyD0fe5KeWRuLOz7JcolFCRz2Xlu24-qEsg', array());
         wp_enqueue_script( 'scrolloverflow', get_stylesheet_directory_uri() . '/js/scrolloverflow.min.js', array ('jquery'));
-        wp_enqueue_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'));
-        wp_enqueue_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.min.js', array ('jquery'));
-        wp_enqueue_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'));
+        // wp_enqueue_script( 'fullpage-easing', get_stylesheet_directory_uri() . '/js/fullPage/easings.min.js', array ('jquery'));
+        wp_enqueue_script( 'fullpage-min', get_stylesheet_directory_uri() . '/js/fullPage/jquery.fullpage.min.js', array ('jquery'));
+        // wp_enqueue_script( 'fullpage-ext', get_stylesheet_directory_uri() . '/js/fullPage/fullpage.extensions.min.js', array('jquery'));
         wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array('jquery'));
         wp_enqueue_script( 'Twinmax', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js', array('jquery'));
         wp_enqueue_script( 'webpixeljs', get_stylesheet_directory_uri() . '/js/webpixel.js', array('jquery'));
 
         wp_enqueue_style('lightslider', get_stylesheet_directory_uri() . '/css/lightslider.css');
-        wp_enqueue_style('fullpage', get_stylesheet_directory_uri() . '/css/fullpage.min.css');
+        wp_enqueue_style('fullpage', get_stylesheet_directory_uri() . '/css/jquery.fullpage.min.css');
         wp_enqueue_style('bootstrap4', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
         wp_enqueue_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
         wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.3.1/css/all.css');
