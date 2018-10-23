@@ -10,6 +10,37 @@ function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+
+
+function toggleSidebarDesktop() {
+    jQuery('.sidebar').toggleClass('opened');
+        let menuItemsArray = jQuery('.menu-list-item');
+
+        if(jQuery('.sidebar').hasClass('opened')) {
+            let sec = 100;
+            for(let list of menuItemsArray) {
+                jQuery(list).delay(sec).animate({
+                    'opacity': 1,
+                    'left': 0
+                },300);
+                sec += 100;
+            }
+            jQuery('.sidebar canvas').delay(sec).animate({'opacity': 1});
+            jQuery('.menu-text').text('Закрыть');
+            jQuery('.menu-text + .material-icons').text('close');
+        } else {
+            jQuery('.sidebar canvas').animate({'opacity': 0})
+            for(let list of menuItemsArray) {
+                jQuery(list).animate({
+                    'opacity': 0,
+                    'left': '-150px'
+                },300);
+            }
+            jQuery('.menu-text').text('Меню');
+            jQuery('.menu-text + .material-icons').text('expand_more');
+        }
+}
+
 function initLightSlider() {
     if(getDocumentWidth() > 768) {
         jQuery('#lightSlider').lightSlider({
@@ -55,6 +86,7 @@ function ajaxLoadContent(url) {
                 if(jQuery('#lightSlider').length > 0) initLightSlider();
                 if(jQuery('#googlemap').length > 0) initGoogleMap();
                 initFullPage();
+                if(url.includes('#')) scrolltoSection(getUrlHash(url));
                 if(getDocumentWidth() > 768) {
                     let menuItemsArray = jQuery('.menu-list-item');
                     jQuery('.sidebar canvas').animate({'opacity': 0})
@@ -73,13 +105,56 @@ function ajaxLoadContent(url) {
     });
 }
 
+function scrolltoSection(hash, silent = true) {
+    let index;
+    switch(hash) {
+        case 'splash':
+            index = 1;
+            break;
+        case 'about':
+            index = 2;
+            break;
+        case 'advantages':
+            index = 3;
+            break;
+        case 'services':
+            index = 4;
+            break;
+        case 'projects':
+            index = 5;
+            break;
+        case 'partners':
+            index = 6;
+            break;
+        case 'contacts':
+            index = 7;
+            break;
+        default:
+            index = 1;
+    }
+    // debugger;
+    if(silent) {
+        jQuery.fn.fullpage.silentMoveTo(index);
+    } else {
+        jQuery.fn.fullpage.moveTo(index);
+    }
+    
+
+}
+
+function getUrlHash(url) {
+    url = url.slice(url.lastIndexOf('#')+1);
+    // console.log(url);
+    return url;
+}
+
 function isCurrentPageAnchor(url) {
     if(url.includes('#')) {
         url = url.slice(url.lastIndexOf('#')+1);
         if(jQuery('[id=' + url + ']').length > 0) {
-            console.log(true);
             return true;
-        } else return false;
+        } else if(!url.includes('projects/')) return true;
+            else return false;
         
     } else {
         return false;
@@ -89,35 +164,11 @@ function isCurrentPageAnchor(url) {
 function initFullPage() {
         //Fullpage scroll
         jQuery('#fullscreen').fullpage({
-            //options here
-            // autoScrolling:true,
-            // scrollHorizontally: true,
-            // licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
             navigation: true,
             navigationPosition: 'right',
             responsiveWidth: 769,
             scrollOverflow: true,
-            // onLeave: function(origin, destination, direction) {
-            //     let prevAnimatedElements = jQuery(origin.item).find('.animated:not(.delayed)');
-            //     if(prevAnimatedElements) {
-            //         for (const element of prevAnimatedElements) {
-            //             jQuery(element).animate({'opacity': 0}, 300);
-            //         }
-            //     }
-            //     if(getDocumentWidth() > 768 && jQuery('.project-content').length < 1) {
-            //         if(origin.index == 0) {
-            //             jQuery('.sidebar').addClass('show-sb');
-            //             jQuery('main').removeClass('fullwidth');
-            //         } else if (destination.index == 0) {
-            //             jQuery('.sidebar').removeClass('show-sb');
-            //             jQuery('main').addClass('fullwidth');
-            //         }
-            //     } 
-            //     else if(getDocumentWidth() <= 768 ) {
-            //         if(direction == 'up') jQuery('.sidebar').addClass('show-mobile');
-            //         else jQuery('.sidebar').removeClass('show-mobile');
-            //     }
-            // },
+            // anchors: ['splash-section', 'about-section', 'advantages-section', 'services-section', 'projects-section', 'partners-section', 'contacts-section'],
             onLeave: function(index, nextIndex, direction) {
                 let prevAnimatedElements = jQuery(this).find('.animated:not(.delayed)');
                 if(prevAnimatedElements) {
@@ -139,18 +190,6 @@ function initFullPage() {
                     else jQuery('.sidebar').removeClass('show-mobile');
                 }
             },
-            // afterLoad: function(origin, destination, direction) {
-            //     if(destination.item) {
-            //         animateLogoExcerpt();
-            //         let nextAnimatedElements = jQuery(destination.item).find('.animated:not(.delayed)');
-            //         let delay = 0;
-            //         for (const element of nextAnimatedElements) {
-            //             jQuery(element).delay(delay)
-            //                 .animate({'opacity': 1}, 500 );
-            //             delay += 100;
-            //         }
-            //     }
-            // },
             afterLoad: function(anchorLink, index) {
                 if(index > 0) {
                     let newSection = jQuery(this);
@@ -213,13 +252,13 @@ function animateLogo() {
 
 function animateLogoExcerpt() {
 
-        let animatedElements = jQuery('#splash').find('.animated.delayed');
-        let delay = 3000;
-        for (const element of animatedElements) {
-            jQuery(element).delay(delay)
-                .animate({'opacity': 1}, 1000 );
-            delay += 500;
-        }
+    let animatedElements = jQuery('#splash').find('.animated.delayed');
+    let delay = 3000;
+    for (const element of animatedElements) {
+        jQuery(element).delay(delay)
+            .animate({'opacity': 1}, 1000 );
+        delay += 500;
+    }
 }
 
 function initGoogleMap() {
@@ -256,6 +295,7 @@ function initGoogleMap() {
 
 jQuery(document).ready(function($) {
 
+    //init History API state
     let storedState, originState;
     if($('.project-single').length > 1) {
         originState = storedState = {
@@ -275,6 +315,7 @@ jQuery(document).ready(function($) {
         initGoogleMap();
     }
 
+    //Full Page
     initFullPage();
 
     //Projects slider
@@ -292,32 +333,7 @@ jQuery(document).ready(function($) {
 
     //Sidebar animation
     $('.menu-container').on('click', function() {
-        $('.sidebar').toggleClass('opened');
-        let menuItemsArray = $('.menu-list-item');
-
-        if($('.sidebar').hasClass('opened')) {
-            let sec = 100;
-            for(let list of menuItemsArray) {
-                $(list).delay(sec).animate({
-                    'opacity': 1,
-                    'left': 0
-                },300);
-                sec += 100;
-            }
-            $('.sidebar canvas').delay(sec).animate({'opacity': 1});
-            $('.menu-text').text('Закрыть');
-            $('.menu-text + .material-icons').text('close');
-        } else {
-            $('.sidebar canvas').animate({'opacity': 0})
-            for(let list of menuItemsArray) {
-                $(list).animate({
-                    'opacity': 0,
-                    'left': '-150px'
-                },300);
-            }
-            $('.menu-text').text('Меню');
-            $('.menu-text + .material-icons').text('expand_more');
-        }
+        toggleSidebarDesktop();
         
     });
 
@@ -402,13 +418,11 @@ jQuery(document).ready(function($) {
         animateLogoExcerpt();
     }
     
-    $('a.ajax-link').on('click', function(e) {
+    $('.ajax-link').on('click', function(e) {
         
         let url = $(this).attr('href');
-        // let newState;
-        // console.log(url);
-        // debugger;
-        if(!isCurrentPageAnchor(url)) {
+        // console.log(!isCurrentPageAnchor(url));
+        if(isCurrentPageAnchor(url) != true) {
             e.preventDefault();
             ajaxLoadContent(url);
             if(url.slice(-'projects'.length) === 'projects' || url.slice(-'projects/'.length) === 'projects/') {
@@ -426,26 +440,52 @@ jQuery(document).ready(function($) {
                 'href': url
             };
             window.history.pushState(storedState, '', url);
+        } else if(url.includes('#')) {
+            storedState = {
+                'pageType': 'home',
+                'href': url
+            };
+            scrolltoSection(getUrlHash(url));
+            if(getDocumentWidth() > 768) {
+                if($('.sidebar').hasClass('opened')) {
+                    let menuItemsArray = jQuery('.menu-list-item');
+                    jQuery('.sidebar canvas').animate({'opacity': 0})
+                    for(let list of menuItemsArray) {
+                        jQuery(list).animate({
+                            'opacity': 0,
+                            'left': '-150px'
+                        },300);
+                    }
+                    jQuery('.menu-text').text('Меню');
+                    jQuery('.menu-text + .material-icons').text('expand_more');
+                    jQuery('.sidebar').toggleClass('opened');
+                }
+            }
+            window.history.pushState(storedState, '', url);
         }
         
     });
 
     $(window).on('popstate', function(e) {
         
-        let prevState, url;
+        let prevState, curentState, url;
 
         if(history.state == null) {
-            prevState = storedState;
+            prevState = originState;
         } else {
             prevState = history.state;
         }
+        currentState = storedState;
 
         if(prevState) {
             url = prevState.href;
         }
-        if(!isCurrentPageAnchor(url)) {
+        if(currentState.pageType != prevState.pageType) {
             e.preventDefault();
             ajaxLoadContent(url);
+        } else if(currentState.pageType == prevState.pageType){
+            
+            scrolltoSection(getUrlHash(prevState.href), false);
         }
 
         if(prevState) {
