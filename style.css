@@ -1064,7 +1064,7 @@ label {
         display: none;
     }
     #projects .section-heading {
-        padding-bottom: 0 !important;
+        /* padding-bottom: 0 !important; */
         margin-bottom: 1.5rem !important;
     }
     .carousel-item-heading {
@@ -1157,5 +1157,12 @@ label {
     }
     .sidebar.show-mobile {
         top: 0;
+    }
+    .project-single {
+        height: auto;
+        margin-bottom: 15px;
+    }
+    .project-logo-container {
+        max-width: 25vw;
     }
 }
