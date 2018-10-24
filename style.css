@@ -1185,4 +1185,11 @@ footer .footer_pll-language-switcher select:active {
     .project-logo-container {
         max-width: 25vw;
     }
+    .sidebar_pll-language-switcher .current-lang > a {
+        font-weight: 800;
+        color: #000000;
+    }
+    .sidebar_pll-language-switcher .lang-item:not(:last-child) {
+        padding-right: 5vw;
+    }
 }

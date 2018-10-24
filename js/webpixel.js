@@ -147,12 +147,15 @@ function ajaxLoadContent(url) {
                 let newContent = jQuery(data).find('#fullscreen');
                 let oldLangSwitcher = jQuery('footer .footer_pll-language-switcher');
                 let newLangSwitcher = jQuery(data).find('.footer_pll-language-switcher');
-                // console.log(newLangSwitcher);
+                let oldMobileLangSwitcher = jQuery('nav .sidebar_pll-language-switcher');
+                let newMobileLangSwitcher = jQuery(data).find('.sidebar_pll-language-switcher');
                 jQuery.fn.fullpage.destroy('all');
                 jQuery(oldContent).remove();
                 jQuery(oldLangSwitcher).remove();
+                jQuery(oldMobileLangSwitcher).remove();
                 jQuery('main').append(newContent);
                 jQuery('footer').prepend(newLangSwitcher);
+                jQuery('.sidebar_pll-container').append(newMobileLangSwitcher);
                 if(jQuery('#lightSlider').length > 0) initLightSlider();
                 if(jQuery('#googlemap').length > 0) initGoogleMap();
                 initFullPage();

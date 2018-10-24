@@ -1,10 +1,11 @@
 <?php
-
-pll_register_string('Menu', 'Menu', 'webpixel');
-pll_register_string('Menu', 'Close', 'webpixel');
-
-
-
+function register_pll_string($name, $string, $group) {
+    if (function_exists('pll_register_string')) {
+        pll_register_string($name, $string, $group);
+    }
+}
+register_pll_string('Menu', 'Menu', 'webpixel');
+register_pll_string('Menu', 'Close', 'webpixel');
 
 function webpixel_enqueue_styles() {
     if(!is_admin()) {
@@ -37,6 +38,29 @@ function webpixel_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'webpixel_enqueue_styles' );
 
+function pll_custom_switcher() {
+    if(function_exists('pll_the_languages')) {
+        $raw_switcher = pll_the_languages(array('raw' => true));
+        $custom_switcher = '<ul class="nav sidebar_pll-language-switcher d-flex d-md-none">';
+
+        foreach ($raw_switcher as $key) {
+            $custom_switcher .= '<li class="lang-item ' . 'lang-item-' . $key[slug];
+            if($key[current_lang]) {
+                $custom_switcher .= ' current-lang">';
+            } else $custom_switcher .= '">';
+            $custom_switcher .= '<a lang="' . $key[locale] . '" hreflang="' . $key[locale] . '" href="' . $key[url] . '">' . $key[name] . '</a></li>';
+        }
+
+        $custom_switcher .= '</ul>';
+
+        return $custom_switcher;
+
+    } else {
+        return;
+    }
+    
+}
+
 function clean_custom_menus() {
 	$menu_name = 'top'; // specify custom menu slug
 	if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
@@ -53,6 +77,9 @@ function clean_custom_menus() {
 			$title = $menu_item->title;
 			$url = $menu_item->url;
 			$menu_list .= "\t\t\t\t\t". '<li class="menu-list-item"><a href="'. $url .'" class="ajax-link">'. $title .'<span>.</span></a></li>' ."\n";
+        }
+        if(pll_custom_switcher()) {
+            $menu_list .= '<li class="menu-list-item sidebar_pll-container">' . pll_custom_switcher() . '</li>';
         }
         $menu_list .= "\t\t\t\t". '</ul>' ."\n" . '</div>';
         $menu_list .= '<div class="logo-container align-self-center">';
