@@ -801,12 +801,12 @@ label {
     text-decoration: none;
     color: #ff8100;
 }
-.project-images img {
+.project-single img {
     width: 100%;
     height: auto;
     padding-bottom: 15px;
 }
-.project-images p {
+.project-single p {
     margin-bottom: 0;
 }
 .project-logo-container {
@@ -828,6 +828,26 @@ label {
 }
 .carousel-item-excerpt {
     margin-bottom: 0;
+}
+footer .footer_pll-language-switcher {
+    position: fixed;
+    right: 65px;
+    top: 7.8vh;
+}
+footer .footer_pll-language-switcher select {
+    background-color: white;
+    border: 1px solid #9b9b9b;
+    font-size: 16px;
+    color: #9b9b9b;
+    padding: 7px 15px 4px 10px;
+    border-radius: 0;
+    font-weight: bold;
+}
+footer .footer_pll-language-switcher select:focus,
+footer .footer_pll-language-switcher select:active {
+    outline: none;
+    background-color: white;
+    border: 1px solid #9b9b9b;
 }
 
 @-webkit-keyframes shadow-pulse

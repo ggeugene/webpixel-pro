@@ -8,6 +8,9 @@
   </body>
   <?php wp_footer() ?>
   <footer>
+        <div class="footer_pll-language-switcher d-none d-md-block">
+            <?php pll_the_languages(array('dropdown' => 1)); ?>
+        </div>
         <div class="callback-button">
             <a class="callback-link d-flex align-items-center justify-content-center w-100 h-100" data-toggle="modal" data-target="#modal-callback">
                 <i class="material-icons">call</i>

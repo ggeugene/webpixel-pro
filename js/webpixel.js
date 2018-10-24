@@ -1,3 +1,5 @@
+let storedState, originState;
+
 function getDocumentWidth() {
     return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 };
@@ -10,7 +12,63 @@ function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-
+function ajaxLinkHandler(url) {
+    // console.log(isCurrentPageAnchor(url));
+    if(isCurrentPageAnchor(url) != true) {
+        ajaxLoadContent(url);
+        if(url.slice(-'projects'.length) === 'projects' || url.slice(-'projects/'.length) === 'projects/') {
+            storedState = {
+                'pageType': 'project-archive',
+                'href': url
+            };
+        } else if(url.includes('projects')) {
+            storedState = {
+                'pageType': 'project-single',
+                'href': url
+            };
+        } else storedState = {
+            'pageType': 'home',
+            'href': url
+        };
+        window.history.pushState(storedState, '', url);
+        // console.log(storedState);
+    } else if(url.includes('#')) {
+        storedState = {
+            'pageType': 'home',
+            'href': url
+        };
+        scrolltoSection(getUrlHash(url));
+        if(getDocumentWidth() > 768) {
+            if(jQuery('.sidebar').hasClass('opened')) {
+                let menuItemsArray = jQuery('.menu-list-item');
+                jQuery('.sidebar canvas').animate({'opacity': 0})
+                for(let list of menuItemsArray) {
+                    jQuery(list).animate({
+                        'opacity': 0,
+                        'left': '-150px'
+                    },300);
+                }
+                jQuery('.menu-text').text(menuStrings.menu);
+                jQuery('.menu-text + .material-icons').text('expand_more');
+                jQuery('.sidebar').toggleClass('opened');
+            }
+        } else {
+            if(jQuery('.menu-list-container').hasClass('show')) {
+                let menuItemsArray = jQuery('.menu-list-item');
+                for(let list of menuItemsArray) {
+                    jQuery(list).animate({
+                        'opacity': 0,
+                        'left': '-150px'
+                    },300);
+                }
+                jQuery('.menu-list-container').toggleClass('show')
+                if(jQuery('.hamburger').hasClass('open')) jQuery('.hamburger').toggleClass('open')
+            }
+        }
+        window.history.pushState(storedState, '', url);
+    }
+    // console.log(history.state);
+}
 
 function toggleSidebarDesktop() {
     jQuery('.sidebar').toggleClass('opened');
@@ -26,7 +84,7 @@ function toggleSidebarDesktop() {
                 sec += 100;
             }
             jQuery('.sidebar canvas').delay(sec).animate({'opacity': 1});
-            jQuery('.menu-text').text('Закрыть');
+            jQuery('.menu-text').text(menuStrings.close);
             jQuery('.menu-text + .material-icons').text('close');
         } else {
             jQuery('.sidebar canvas').animate({'opacity': 0})
@@ -36,7 +94,7 @@ function toggleSidebarDesktop() {
                     'left': '-150px'
                 },300);
             }
-            jQuery('.menu-text').text('Меню');
+            jQuery('.menu-text').text(menuStrings.menu);
             jQuery('.menu-text + .material-icons').text('expand_more');
         }
 }
@@ -87,9 +145,14 @@ function ajaxLoadContent(url) {
             if(data) {
                 let oldContent = jQuery('#fullscreen');
                 let newContent = jQuery(data).find('#fullscreen');
+                let oldLangSwitcher = jQuery('footer .footer_pll-language-switcher');
+                let newLangSwitcher = jQuery(data).find('.footer_pll-language-switcher');
+                // console.log(newLangSwitcher);
                 jQuery.fn.fullpage.destroy('all');
                 jQuery(oldContent).remove();
+                jQuery(oldLangSwitcher).remove();
                 jQuery('main').append(newContent);
+                jQuery('footer').prepend(newLangSwitcher);
                 if(jQuery('#lightSlider').length > 0) initLightSlider();
                 if(jQuery('#googlemap').length > 0) initGoogleMap();
                 initFullPage();
@@ -103,7 +166,7 @@ function ajaxLoadContent(url) {
                             'left': '-150px'
                         },300);
                     }
-                    jQuery('.menu-text').text('Меню');
+                    jQuery('.menu-text').text(menuStrings.menu);
                     jQuery('.menu-text + .material-icons').text('expand_more');
                     jQuery('.sidebar').toggleClass('opened');
                 }
@@ -119,6 +182,10 @@ function ajaxLoadContent(url) {
                     if(jQuery('.hamburger').hasClass('open')) 
                         jQuery('.hamburger').toggleClass('open')
                 }
+                jQuery(jQuery(newContent).find('.ajax-link')).on('click', function(e){
+                    ajaxLinkHandler(jQuery(this).attr('href'));
+                    e.preventDefault();
+                });
             }
         }
     });
@@ -151,7 +218,6 @@ function scrolltoSection(hash, silent = true) {
         default:
             index = 1;
     }
-    // debugger;
     if(silent) {
         jQuery.fn.fullpage.silentMoveTo(index);
     } else {
@@ -163,7 +229,6 @@ function scrolltoSection(hash, silent = true) {
 
 function getUrlHash(url) {
     url = url.slice(url.lastIndexOf('#')+1);
-    // console.log(url);
     return url;
 }
 
@@ -172,7 +237,7 @@ function isCurrentPageAnchor(url) {
         url = url.slice(url.lastIndexOf('#')+1);
         if(jQuery('[id=' + url + ']').length > 0) {
             return true;
-        } else if(!url.includes('projects/')) return true;
+        }// } else if(!url.includes('projects/')) return true;
             else return false;
         
     } else {
@@ -187,7 +252,6 @@ function initFullPage() {
             navigationPosition: 'right',
             responsiveWidth: 769,
             scrollOverflow: true,
-            // anchors: ['splash-section', 'about-section', 'advantages-section', 'services-section', 'projects-section', 'partners-section', 'contacts-section'],
             onLeave: function(index, nextIndex, direction) {
                 let prevAnimatedElements = jQuery(this).find('.animated:not(.delayed)');
                 if(prevAnimatedElements) {
@@ -229,7 +293,7 @@ function initFullPage() {
                         }
                         setTimeout(function() {
                             animateLogo();
-                        }, 1000);
+                        }, 500);
                         animateLogoExcerpt();
             }
                         
@@ -318,13 +382,13 @@ function initGoogleMap() {
 jQuery(document).ready(function($) {
 
     //init History API state
-    let storedState, originState;
-    if($('.project-single').length > 1) {
+    
+    if($('.project-single').length > 0) {
         originState = storedState = {
             'pageType': 'project-single',
             'href': jQuery(location).attr('href')
         };
-    } else if($('.projects-archive').length > 1) {
+    } else if($('.projects-archive').length > 0) {
         originState = storedState = {
             'pageType': 'project-archive',
             'href': jQuery(location).attr('href')
@@ -352,6 +416,10 @@ jQuery(document).ready(function($) {
         $.fn.fullpage.moveSectionDown();
     });
 
+    $('.menu-list-item a').on('click', function(){
+        $('.menu-list-item').removeClass('active');
+        $(this).parent('.menu-list-item').addClass('active');
+    }); 
 
     //Sidebar animation
     $('.menu-container').on('click', function() {
@@ -436,81 +504,25 @@ jQuery(document).ready(function($) {
     if (getDocumentWidth() <= 768) {
         setTimeout(function() {
             animateLogo();
-        }, 1000);
+        }, 500);
         animateLogoExcerpt();
     }
     
     $('.ajax-link').on('click', function(e) {
-        
-        let url = $(this).attr('href');
-        // console.log(!isCurrentPageAnchor(url));
-        if(isCurrentPageAnchor(url) != true) {
-            e.preventDefault();
-            ajaxLoadContent(url);
-            if(url.slice(-'projects'.length) === 'projects' || url.slice(-'projects/'.length) === 'projects/') {
-                storedState = {
-                    'pageType': 'project-archive',
-                    'href': url
-                };
-            } else if(url.includes('projects')) {
-                storedState = {
-                    'pageType': 'project-single',
-                    'href': url
-                };
-            } else storedState = {
-                'pageType': 'home',
-                'href': url
-            };
-            window.history.pushState(storedState, '', url);
-        } else if(url.includes('#')) {
-            storedState = {
-                'pageType': 'home',
-                'href': url
-            };
-            scrolltoSection(getUrlHash(url));
-            if(getDocumentWidth() > 768) {
-                if($('.sidebar').hasClass('opened')) {
-                    let menuItemsArray = jQuery('.menu-list-item');
-                    jQuery('.sidebar canvas').animate({'opacity': 0})
-                    for(let list of menuItemsArray) {
-                        jQuery(list).animate({
-                            'opacity': 0,
-                            'left': '-150px'
-                        },300);
-                    }
-                    jQuery('.menu-text').text('Меню');
-                    jQuery('.menu-text + .material-icons').text('expand_more');
-                    jQuery('.sidebar').toggleClass('opened');
-                }
-            } else {
-                if($('.menu-list-container').hasClass('show')) {
-                    let menuItemsArray = $('.menu-list-item');
-                    for(let list of menuItemsArray) {
-                        $(list).animate({
-                            'opacity': 0,
-                            'left': '-150px'
-                        },300);
-                    }
-                    $('.menu-list-container').toggleClass('show')
-                    if($('.hamburger').hasClass('open')) $('.hamburger').toggleClass('open')
-                }
-            }
-            window.history.pushState(storedState, '', url);
-        }
-        
+       ajaxLinkHandler($(this).attr('href'));
+       e.preventDefault();
     });
 
     $(window).on('popstate', function(e) {
+        // debugger;
+        let prevState, currentState, url;
         
-        let prevState, curentState, url;
-
         if(history.state == null) {
             prevState = originState;
         } else {
             prevState = history.state;
         }
         currentState = storedState;
-
         if(prevState) {
             url = prevState.href;
         }
