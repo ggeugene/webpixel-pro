@@ -6,6 +6,8 @@ function register_pll_string($name, $string, $group) {
 }
 register_pll_string('Menu', 'Menu', 'webpixel');
 register_pll_string('Menu', 'Close', 'webpixel');
+register_pll_string('Modal', 'Callback', 'webpixel');
+register_pll_string('Modal', 'What are you interested in?', 'webpixel');
 
 function webpixel_enqueue_styles() {
     if(!is_admin()) {
@@ -41,7 +43,7 @@ add_action( 'wp_enqueue_scripts', 'webpixel_enqueue_styles' );
 function pll_custom_switcher() {
     if(function_exists('pll_the_languages')) {
         $raw_switcher = pll_the_languages(array('raw' => true));
-        $custom_switcher = '<ul class="nav sidebar_pll-language-switcher d-flex d-md-none">';
+        $custom_switcher = '<ul class="nav sidebar_pll-language-switcher">';
 
         foreach ($raw_switcher as $key) {
             $custom_switcher .= '<li class="lang-item ' . 'lang-item-' . $key[slug];

@@ -597,10 +597,10 @@ input.input-mail {
     background-position: left 2vh top 2.7vh;
 }
 input.input-phone {
-    background-image: url('img/envelope-icon.png');
+    background-image: url('img/phone.png');
     background-repeat: no-repeat;
-    background-size: auto;
-    background-position: left 2vh top 2.7vh;
+    background-size: 18px;
+    background-position: left 2vh top 2.4vh;
 }
 textarea {
     position: relative;
@@ -621,6 +621,7 @@ textarea {
     padding: 1.9vh;
     color: #000000;
     background-color: transparent;
+    border: 1px solid #000000;
 }
 input.privacy-check {
     margin: 40px 0;
@@ -848,6 +849,9 @@ footer .footer_pll-language-switcher select:active {
     outline: none;
     background-color: white;
     border: 1px solid #9b9b9b;
+}
+.sidebar_pll-language-switcher {
+    display: none;
 }
 
 @-webkit-keyframes shadow-pulse
@@ -1137,6 +1141,34 @@ footer .footer_pll-language-switcher select:active {
     .input-mail {
         background-position: left 12px top 17px;
     }
+    .modal input[type="text"], .modal input[type="email"], .modal input[type="tel"] {
+        margin-bottom: 10px;
+        padding: 1vh 1vh 1vh 40px;
+    }
+    .modal input[type="text"] {
+        
+        background-position: left 2.23vh top 1.3vh;
+    }
+    .modal input[type="email"] {
+        background-position: left 2vh top 1.7vh;
+    }
+    .modal input[type="tel"] {
+        background-position: left 2vh top 1.3vh;
+    }
+    .modal .service-menu {
+        padding: 1vh;
+        margin-bottom: 10px;
+    }
+    textarea {
+        height: 150px;
+        padding: 1vh;
+    }
+    input.privacy-check {
+        margin: 0 0 10px 0;
+    }
+    span.wpcf7-list-item {
+        margin: 0;
+    }
     .menu-list-container {
         position: fixed;
         height: 100vh;
@@ -1184,6 +1216,9 @@ footer .footer_pll-language-switcher select:active {
     }
     .project-logo-container {
         max-width: 25vw;
+    }
+    .sidebar_pll-language-switcher {
+        display: flex;
     }
     .sidebar_pll-language-switcher .current-lang > a {
         font-weight: 800;

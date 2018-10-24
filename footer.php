@@ -26,7 +26,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-12">
-                                    <h2 class="section-heading text-uppercase text-center mb-4"><?php _e( 'Обратная связь', 'webpixel' ) ?><span class="blue-text">.</span></h2>
+                                    <h2 class="section-heading text-uppercase text-center mb-4"><?php pll_e('Callback') ?><span class="blue-text">.</span></h2>
                                 </div>
                             </div>
                             <div class="row align-items-center justify-content-center">
@@ -49,11 +49,11 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h2 class="section-heading text-uppercase text-center mb-4"><?php _e( 'Что вас интересует?', 'webpixel' ) ?></h2>
+                                        <h2 class="section-heading text-uppercase text-center mb-4"><?php pll_e('What are you interested in?') ?></h2>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-lg-6">
                                     <?php echo do_shortcode('[contact-form-7 id="56" title="Brief contact form RU"]'); ?>
                                     </div>
                                 </div>
