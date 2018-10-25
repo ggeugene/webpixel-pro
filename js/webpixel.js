@@ -26,7 +26,7 @@ function setCustomFileInput() {
             fileName = e.target.value.split( '\\' ).pop();
 
         if( fileName ) {
-            if(fileName.length > 20) fileName = fileName.slice(0,21) + '...';
+            if(fileName.length > 15) fileName = fileName.slice(0,15) + '...';
             jQuery(label).text(fileName);
         }
         else
@@ -390,7 +390,7 @@ function initGoogleMap() {
         center.lat = pos.lat;
         center.lng = pos.lng;
     }
-    if(getDocumentWidth() >= 768 && getDocumentWidth() < 992) {
+    if(getDocumentWidth() >= 768 && getDocumentWidth() < 1199) {
         center.lat = 48.466868;
         center.lng = 35.048335;
     }

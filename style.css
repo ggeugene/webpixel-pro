@@ -147,13 +147,15 @@ main::before {
     /* opacity: 0; */
 }
 .section-heading {
-    font-size: 7.15vh;
+    font-size: 7vh;
     line-height: 1;
 }
 .tab-heading,
-.carousel-item-heading,
-.carousel-item-year {
+.carousel-item-heading {
     font-size: 3.6vh;
+}
+.carousel-item-year {
+    font-size: 2.6vh;
 }
 .carousel-item-heading,
 .carousel-item-year {
@@ -487,7 +489,7 @@ p,
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
 }
-#contacts .col-md-5 {
+#contacts .col-xl-5 {
     z-index: 1;
 }
 #googlemap { 
@@ -549,6 +551,11 @@ p,
     color: #ff8100;
     text-decoration: none;
 }
+span.input-file, span.input-mail,
+span.input-phone, span.input-name,
+span.menu-service {
+    margin-bottom: 30px;
+}
 input[type="text"], input[type="email"], 
 input[type="tel"], .input-file + label{
     position: relative;
@@ -558,28 +565,35 @@ input[type="tel"], .input-file + label{
     max-width: 260px;
     width: 100%;
     font-size: 2vh;
-    padding: 1.9vh 1.9vh 1.9vh 5.6vh;
-    margin-bottom: 30px;
+    padding: 18px 18px 18px 52px;
+    /* margin-bottom: 30px; */
 }
 .input-file + label {
     cursor: pointer;
     background-image: url('img/upload.png');
     background-repeat: no-repeat;
     background-size: 18px;
-    background-position: left 2vh top 2.2vh;
+    background-position: left 20px top 22px;
     margin-bottom: 0;
 }
 .modal input[type="text"], 
 .modal input[type="email"], 
 .modal input[type="tel"],
 .modal input[type="submit"],
-.input-file + label {
+.modal .input-file + label {
     max-width: 100%;
 }
-.modal input[type="text"], 
-.modal input[type="email"], 
-.modal input[type="tel"] {
+.wpcf7-form-control-wrap {
     margin-bottom: 40px;
+    display: block;
+}
+.modal .wpcf7-form-control-wrap.input-file,
+.modal .wpcf7-form-control-wrap.input-info,
+.modal .wpcf7-form-control-wrap.privacy-check {
+    margin-bottom: 0;
+}
+.modal .wpcf7-form-control-wrap.input-info {
+    height: 100%;
 }
 input[type="submit"] {
     max-width: 260px;
@@ -587,7 +601,7 @@ input[type="submit"] {
     font-size: 2vh;
     letter-spacing: 3px;
     font-weight: bold;
-    padding: 1.9vh;
+    padding: 18px;
     background-color: #FF8100;
     color: #ffffff;
     border: none;
@@ -610,19 +624,19 @@ input.input-name {
     background-image: url('img/user-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: left 2.23vh top 2.3vh
+    background-position: left 20px top 22px
 }
 input.input-mail {
     background-image: url('img/envelope-icon.png');
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: left 2vh top 2.7vh;
+    background-position: left 20px top 25px;
 }
 input.input-phone {
     background-image: url('img/phone.png');
     background-repeat: no-repeat;
     background-size: 18px;
-    background-position: left 2vh top 2.4vh;
+    background-position: left 20px top 23px;
 }
 textarea {
     position: relative;
@@ -632,21 +646,21 @@ textarea {
     width: 100%;
     height: 100%;
     font-size: 2vh;
-    padding: 1.9vh;
+    padding: 18px;
     margin-bottom: 0px;
     resize: none;
 }
 .service-menu {
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     width: 100%;
     font-size: 2vh;
-    padding: 1.9vh;
+    padding: 18px;
     color: #000000;
     background-color: transparent;
     border: 1px solid #000000;
 }
 input.privacy-check {
-    margin: 40px 0;
+    margin: 30px 0;
     width: 20px;
     height: 20px;
     font-size: 2vh;
@@ -890,6 +904,23 @@ input.input-file {
 .inputfile + label:hover {
     border-color: #ff8100; 
 }
+div.wpcf7-response-output {
+    margin-left: 0;
+    margin-right: 0;
+    line-height: 1.2;
+}
+#contacts div.wpcf7-response-output {
+    max-width: 75%;
+    border:none;
+}
+#contacts div.wpcf7-validation-errors,
+#contacts div.wpcf7-acceptance-missing {
+    background-color: #ff8100;
+    color: #fff;
+}
+span.wpcf7-not-valid-tip {
+    font-size: 16px;
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -1079,12 +1110,6 @@ input.input-file {
     .section-heading {
         font-size: 4vh;
     }
-    /* .canvas-right {
-        right: 0;
-    }
-    .canvas-left {
-        left: 0;
-    } */
     #services .no-gutters {
         margin: 0;
     }
@@ -1166,11 +1191,11 @@ input.input-file {
     #partners .row.no-gutters {
         margin-bottom: 1.5rem !important;
     }
-    input[type="text"] {
-        padding: 14px 14px 14px 40px;
+    input[type="text"], input[type="email"], input[type="tel"], .input-file + label {
+        padding: 10px 10px 10px 40px;
     }
     input[type="submit"] {
-        padding: 14px;
+        padding: 10px;
     }
     .input-name {
         background-position: left 13px top 15px;
@@ -1180,26 +1205,30 @@ input.input-file {
     }
     .modal input[type="text"], .modal input[type="email"],
     .modal input[type="tel"], .input-file + label {
+        margin-bottom: 0px;
+    }
+    span.wpcf7-form-control-wrap {
+        margin-bottom: 20px;
+    }
+    .modal .wpcf7-form-control-wrap {
         margin-bottom: 10px;
-        padding: 1vh 1vh 1vh 40px;
     }
-    .modal input[type="text"] {
-        
-        background-position: left 2.23vh top 1.3vh;
+    .modal .wpcf7-form-control-wrap.input-file {
+        margin-bottom: 0px
     }
-    .modal input[type="email"] {
-        background-position: left 2vh top 1.7vh;
+    .modal .wpcf7-form-control-wrap.input-file + label {
+        margin-bottom: 10px;
     }
-    .modal input[type="tel"] {
-        background-position: left 2vh top 1.3vh;
+    input.privacy-check + span {
+        font-size: 14px;
     }
     .modal .service-menu {
-        padding: 1vh;
-        margin-bottom: 10px;
+        padding: 10px;
+        /* margin-bottom: 10px; */
     }
     textarea {
         height: 150px;
-        padding: 1vh;
+        padding: 14px;
     }
     input.privacy-check {
         margin: 0 0 10px 0;
@@ -1264,6 +1293,18 @@ input.input-file {
     }
     .sidebar_pll-language-switcher .lang-item:not(:last-child) {
         padding-right: 5vw;
+    }
+    input.input-name {
+        background-position: left 14px top 11px;
+    }
+    input.input-mail {
+        background-position: left 14px top 12px;
+    }
+    input.input-phone {
+        background-position: left 14px top 11px;
+    }
+    .input-file + label {
+        background-position: left 14px top 10px;
     }
 }
 @media(min-width:768px) and (max-width:991px) {
@@ -1342,12 +1383,158 @@ input.input-file {
     input[type="text"],
     input[type="email"],
     input[type="tel"],
-    textarea,
+    .input-file + label {
+        font-size: 2.5vw;
+        padding: 14px 14px 14px 40px;
+    }
+    .wpcf7-form-control-wrap {
+        margin-bottom: 30px;
+    }
+    textarea {
+        font-size: 2.5vw;
+        padding: 14px;
+    }
     .modal select {
         font-size: 2.5vw;
+        padding: 14px;
+    }
+    input[type="submit"] {
+        padding: 14px;
     }
     .menu-list-item a {
         font-size: 7.5vw;
+    }
+    input.input-mail {
+        background-position: left 13px top 19px
+    }
+    input.input-phone {
+        background-position: left 14px top 18px;
+    }
+    input.input-name {
+        background-position: left 14px top 18px;
+    }
+    .tab-subheading {
+        font-size: 4vw;
+    }
+    .input-file + label {
+        margin-bottom: 0 !important;
+        background-position: left 13px top 18px;
+    }
+    .contact-list-item {
+        font-size: 2.7vw;
+    }
+    .contact-address::before,
+    .contact-phone::before,
+    .contact-mail::before {
+        font-size: 4vw;
+    }
+}
+@media(min-width:992px) and (max-width:1199px) {
+    .contact-address::before,
+    .contact-phone::before,
+    .contact-mail::before {
+        font-size: 4vw;
+    }
+    .contact-list-item {
+        font-size: 2.8vw;
+    }
+    .full-logo-container svg {
+        width: 60%;
+    }
+    .logo-excerpt {
+        font-size: 5.5vw;
+    }
+    footer .footer_pll-language-switcher {
+        top: 65px;
+    }
+    .callback-button {
+        bottom: 65px;
+    }
+    .menu-list-item a {
+        font-size: 7vw;
+    }
+    .social-link {
+        font-size: 2vw;
+    }
+    .section-heading {
+        font-size: 4.5vw;
+    }
+    p, .tab-pane {
+        font-size: 2vw;
+        line-height: 1.4;
+    }
+    .btn {
+        font-size: 2vw;
+        letter-spacing: 0;
+    }
+    .advantage-icon i {
+        font-size: 5vw;
+    }
+    .advantage-header {
+        font-size: 2.3vw;
+    }
+    .advantage-text {
+        font-size: 1.8vw;
+        line-height: 1.2;
+    }
+    .tabs-left>li>a {
+        height: 5.5vw;
+        width: 5.5vw;
+    }
+    .tabs-left i {
+        font-size: 2.7vw;
+    }
+    .tab-subheading {
+        font-size: 4vw;
+    }
+    .carousel-item-image-container,
+    .carousel-item-image {
+        height: auto;
+        width: 100%;
+    }
+    #projects .section-heading::before {
+        width: 40.5%;
+    }
+    #projects .section-heading::after {
+        left: 28.4%;
+    }
+    .tab-heading,
+    .carousel-item-heading,
+    .carousel-item-year {
+        font-size: 4.5vw;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], .input-file + label, input[type="submit"] {
+        max-width: 80%;
+    }
+    input[type="text"], input[type="email"], input[type="tel"], .input-file + label, textarea {
+        font-size: 2.5vw;
+    }
+    input.input-name {
+        background-size: 18px;
+        background-position: left 20px top 24px;
+    }
+    input.input-phone {
+        background-size: 20px;
+        background-position: left 20px top 25px;
+    }
+    input.input-mail {
+        background-size: 20px;
+        background-position: left 20px top 28px;
+    }
+    .input-file + label {
+        background-size: 20px;
+        background-position: left 20px top 24px;
+    }
+    .modal .wpcf7-form-control-wrap.input-info,
+    textarea {
+        height: 394px;
+    }
+}
+
+@media(max-width:1199px) {
+    .menu-container .menu-text,
+    .menu-container .material-icons {
+        display: none;
     }
     .menu-container {
         transform: none;
@@ -1355,25 +1542,11 @@ input.input-file {
         height: auto;
         width: 8.3333vw;
     }
-    .sidebar.opened .menu-container {
-        right: 0;
-    }
-    .menu-container .menu-text,
-    .menu-container .material-icons {
-        display: none;
-    }
     .menu-container > .tablet-menu {
         display: block;
         font-size: 4.5vw;
     }
-    input.input-mail {
-        background-position: left 2vh top 2.5vh;
+    .sidebar.opened .menu-container {
+        right: 0;
     }
-    input.input-phone {
-        background-position: left 2vh top 2.2vh;
-    }
-    input.input-name {
-        background-position: left 2.23vh top 2.2vh;
-    }
-
 }

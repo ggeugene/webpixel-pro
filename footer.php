@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="row align-items-center justify-content-center">
-                                <div class="col-12 col-lg-3 col-md-6">
+                                <div class="col-12 col-xl-3 col-md-6">
                                     <?php 
                                     if(pll_current_language() == 'en_US') {
                                         echo do_shortcode('[contact-form-7 id="93" title="Callback contact form EN"]');
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                     <?php 
                                     if(pll_current_language() == 'en_US') {
                                         echo do_shortcode('[contact-form-7 id="92" title="Brief contact form EN"]');

@@ -208,11 +208,11 @@ function webpixel_project_slider_shortcode( $atts ) {
 
         foreach($query->posts as $post) {
             $string .= '<li class="carousel-item-container row flex-column flex-md-row ">';
-            $string .= '<div class="align-self-center col-12 col-lg-1 col-md-2 mb-2 mb-md-0">';
+            $string .= '<div class="align-self-center col-12 col-xl-1 col-md-2 mb-2 mb-md-0">';
             $string .= '<p class="carousel-item-year text-center text-md-right mb-0">' . get_field('year', $post->ID) . '</p>';
             $string .= '<p class="carousel-item-month text-center text-md-right mb-0">' . get_field('month', $post->ID) . '</p>';
             $string .= '</div>';
-            $string .= '<div class="align-items-center col-12 col-lg-4 col-md-3 d-flex justify-content-center mb-2 mb-md-0">';
+            $string .= '<div class="align-items-center col-12 col-xl-4 col-md-3 d-flex justify-content-center mb-2 mb-md-0">';
             $string .= '<div class="carousel-item-image-container text-center d-flex align-items-center">';
             if(!empty(get_the_post_thumbnail_url($post->ID))) {
                 $string .= '<img class="carousel-item-image" src="' . get_the_post_thumbnail_url($post->ID) . '"/>';
@@ -220,7 +220,7 @@ function webpixel_project_slider_shortcode( $atts ) {
                 $string .= '<img class="carousel-item-image" src="https://via.placeholder.com/300x200"/>';
             }
             $string .= '</div></div>';
-            $string .= '<div class="align-self-center col-12 col-lg-7 col-md-7 mb-2 mb-md-0">';
+            $string .= '<div class="align-self-center col-12 col-xl-7 col-md-7 mb-2 mb-md-0">';
             $string .= '<a href="' . get_the_permalink($post->ID) . '" class="carousel-item-link ajax-link">';
             $string .= '<p class="carousel-item-heading text-uppercase">' . get_the_title( $post->ID) . '</p></a>';
             $string .= '<p class="carousel-item-excerpt">' . get_field('excerpt', $post->ID) . '</p>';
