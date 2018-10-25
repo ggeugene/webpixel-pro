@@ -16,6 +16,18 @@
     background: #FF8100;
     color: #ffffff; /* Gecko Browsers */
 }
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000000;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #000000;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #000000;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #000000;
+}
 .blue-text::selection {
     color: #000000;
 }
@@ -537,7 +549,8 @@ p,
     color: #ff8100;
     text-decoration: none;
 }
-input[type="text"], input[type="email"], input[type="tel"] {
+input[type="text"], input[type="email"], 
+input[type="tel"], .input-file + label{
     position: relative;
     background-color: transparent;
     color: #000000;
@@ -548,10 +561,19 @@ input[type="text"], input[type="email"], input[type="tel"] {
     padding: 1.9vh 1.9vh 1.9vh 5.6vh;
     margin-bottom: 30px;
 }
+.input-file + label {
+    cursor: pointer;
+    background-image: url('img/upload.png');
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: left 2vh top 2.2vh;
+    margin-bottom: 0;
+}
 .modal input[type="text"], 
 .modal input[type="email"], 
 .modal input[type="tel"],
-.modal input[type="submit"] {
+.modal input[type="submit"],
+.input-file + label {
     max-width: 100%;
 }
 .modal input[type="text"], 
@@ -856,6 +878,18 @@ footer .footer_pll-language-switcher select:active {
 .sidebar_pll-language-switcher {
     display: none;
 }
+input.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    border-color: #ff8100; 
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -1144,7 +1178,8 @@ footer .footer_pll-language-switcher select:active {
     .input-mail {
         background-position: left 12px top 17px;
     }
-    .modal input[type="text"], .modal input[type="email"], .modal input[type="tel"] {
+    .modal input[type="text"], .modal input[type="email"],
+    .modal input[type="tel"], .input-file + label {
         margin-bottom: 10px;
         padding: 1vh 1vh 1vh 40px;
     }
@@ -1231,7 +1266,6 @@ footer .footer_pll-language-switcher select:active {
         padding-right: 5vw;
     }
 }
-
 @media(min-width:768px) and (max-width:991px) {
     .full-logo-container svg {
         width: 60%;
@@ -1332,4 +1366,14 @@ footer .footer_pll-language-switcher select:active {
         display: block;
         font-size: 4.5vw;
     }
+    input.input-mail {
+        background-position: left 2vh top 2.5vh;
+    }
+    input.input-phone {
+        background-position: left 2vh top 2.2vh;
+    }
+    input.input-name {
+        background-position: left 2.23vh top 2.2vh;
+    }
+
 }

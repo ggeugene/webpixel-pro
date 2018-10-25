@@ -31,7 +31,13 @@
                             </div>
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-12 col-lg-3 col-md-6">
-                                    <?php echo do_shortcode('[contact-form-7 id="55" title="Callback contact form RU"]'); ?>
+                                    <?php 
+                                    if(pll_current_language() == 'en_US') {
+                                        echo do_shortcode('[contact-form-7 id="93" title="Callback contact form EN"]');
+                                    } else {
+                                        echo do_shortcode('[contact-form-7 id="55" title="Callback contact form RU"]');
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +60,13 @@
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="col-12 col-lg-6">
-                                    <?php echo do_shortcode('[contact-form-7 id="56" title="Brief contact form RU"]'); ?>
+                                    <?php 
+                                    if(pll_current_language() == 'en_US') {
+                                        echo do_shortcode('[contact-form-7 id="92" title="Brief contact form EN"]');
+                                    } else {
+                                        echo do_shortcode('[contact-form-7 id="56" title="Brief contact form RU"]');
+                                    }
+                                    ?>
                                     </div>
                                 </div>
                             </div>

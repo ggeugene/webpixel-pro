@@ -12,6 +12,29 @@ function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function setCustomFileInput() {
+    let input = jQuery( 'input.input-file' );
+    
+    let label	 = jQuery('.input-file-label'),
+        labelVal = jQuery(label).text();
+
+    jQuery(input).on('change', function(e) {
+        let fileName = '';
+        if( this.files && this.files.length > 1 )
+            fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+        else
+            fileName = e.target.value.split( '\\' ).pop();
+
+        if( fileName ) {
+            if(fileName.length > 20) fileName = fileName.slice(0,21) + '...';
+            jQuery(label).text(fileName);
+        }
+        else
+            jQuery(label).text(labelVal);
+    });
+    
+}
+
 function ajaxLinkHandler(url) {
     // console.log(isCurrentPageAnchor(url));
     if(isCurrentPageAnchor(url) != true) {
@@ -417,6 +440,7 @@ jQuery(document).ready(function($) {
     //Projects slider
     initLightSlider();
 
+    setCustomFileInput();
 
     if($('.project-content').length > 0) {
         $('.sidebar').addClass('show-sb');
