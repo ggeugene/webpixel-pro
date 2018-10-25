@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="row align-items-center justify-content-center">
-                                <div class="col-md-3 col-12">
+                                <div class="col-12 col-lg-3 col-md-6">
                                     <?php echo do_shortcode('[contact-form-7 id="55" title="Callback contact form RU"]'); ?>
                                 </div>
                             </div>

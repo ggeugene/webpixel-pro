@@ -38,7 +38,7 @@ function ajaxLinkHandler(url) {
             'href': url
         };
         scrolltoSection(getUrlHash(url));
-        if(getDocumentWidth() > 768) {
+        if(getDocumentWidth() >= 768) {
             if(jQuery('.sidebar').hasClass('opened')) {
                 let menuItemsArray = jQuery('.menu-list-item');
                 jQuery('.sidebar canvas').animate({'opacity': 0})
@@ -50,6 +50,7 @@ function ajaxLinkHandler(url) {
                 }
                 jQuery('.menu-text').text(menuStrings.menu);
                 jQuery('.menu-text + .material-icons').text('expand_more');
+                jQuery('.menu-container .tablet-menu').text('menu');
                 jQuery('.sidebar').toggleClass('opened');
             }
         } else {
@@ -85,7 +86,7 @@ function toggleSidebarDesktop() {
             }
             jQuery('.sidebar canvas').delay(sec).animate({'opacity': 1});
             jQuery('.menu-text').text(menuStrings.close);
-            jQuery('.menu-text + .material-icons').text('close');
+            jQuery('.menu-text + .material-icons, .menu-container .tablet-menu').text('close');
         } else {
             jQuery('.sidebar canvas').animate({'opacity': 0})
             for(let list of menuItemsArray) {
@@ -96,11 +97,12 @@ function toggleSidebarDesktop() {
             }
             jQuery('.menu-text').text(menuStrings.menu);
             jQuery('.menu-text + .material-icons').text('expand_more');
+            jQuery('.menu-container .tablet-menu').text('menu');
         }
 }
 
 function initLightSlider() {
-    if(getDocumentWidth() > 768) {
+    if(getDocumentWidth() >= 768) {
         jQuery('#lightSlider').lightSlider({
             item: 2.5,
             vertical: true,
@@ -128,7 +130,7 @@ function ajaxLoadContent(url) {
         url: url,
         type: 'GET',
         beforeSend: function(){
-            if(getDocumentWidth() > 768) {
+            if(getDocumentWidth() >= 768) {
                 if(!jQuery('.sidebar').hasClass('opened')) {
                     jQuery('.sidebar').toggleClass('opened');
                 }
@@ -160,7 +162,7 @@ function ajaxLoadContent(url) {
                 if(jQuery('#googlemap').length > 0) initGoogleMap();
                 initFullPage();
                 if(url.includes('#')) scrolltoSection(getUrlHash(url));
-                if(getDocumentWidth() > 768) {
+                if(getDocumentWidth() >= 768) {
                     let menuItemsArray = jQuery('.menu-list-item');
                     jQuery('.sidebar canvas').animate({'opacity': 0})
                     for(let list of menuItemsArray) {
@@ -171,6 +173,7 @@ function ajaxLoadContent(url) {
                     }
                     jQuery('.menu-text').text(menuStrings.menu);
                     jQuery('.menu-text + .material-icons').text('expand_more');
+                    jQuery('.menu-container .tablet-menu').text('menu');
                     jQuery('.sidebar').toggleClass('opened');
                 }
                 else {
@@ -253,7 +256,7 @@ function initFullPage() {
         jQuery('#fullscreen').fullpage({
             navigation: true,
             navigationPosition: 'right',
-            responsiveWidth: 769,
+            responsiveWidth: 768,
             scrollOverflow: true,
             onLeave: function(index, nextIndex, direction) {
                 let prevAnimatedElements = jQuery(this).find('.animated:not(.delayed)');
@@ -262,7 +265,7 @@ function initFullPage() {
                         jQuery(element).animate({'opacity': 0}, 300);
                     }
                 }
-                if(getDocumentWidth() > 768 && (jQuery('.project-single').length < 1 || jQuery('.projects-archive').length < 1)) {
+                if(getDocumentWidth() >= 768 && (jQuery('.project-single').length < 1 || jQuery('.projects-archive').length < 1)) {
                     if(index == 1) {
                         jQuery('.sidebar').addClass('show-sb');
                         jQuery('main').removeClass('fullwidth');
@@ -271,7 +274,7 @@ function initFullPage() {
                         jQuery('main').addClass('fullwidth');
                     }
                 } 
-                else if(getDocumentWidth() <= 768 ) {
+                else if(getDocumentWidth() < 768 ) {
                     if(direction == 'up') jQuery('.sidebar').addClass('show-mobile');
                     else jQuery('.sidebar').removeClass('show-mobile');
                 }
@@ -364,6 +367,10 @@ function initGoogleMap() {
         center.lat = pos.lat;
         center.lng = pos.lng;
     }
+    if(getDocumentWidth() >= 768 && getDocumentWidth() < 992) {
+        center.lat = 48.466868;
+        center.lng = 35.048335;
+    }
     // The map, centered
     let map = new google.maps.Map(
         document.getElementById('googlemap'), {
@@ -371,7 +378,7 @@ function initGoogleMap() {
             center: center,
             disableDefaultUI: true,
             animation:  google.maps.Animation.DROP,
-            draggable: false,
+            draggable: true,
             draggableCursor: 'default'
         });
     // The marker, positioned
@@ -504,7 +511,7 @@ jQuery(document).ready(function($) {
         drawDots(canvas.getContext('2d'));
     }
 
-    if (getDocumentWidth() <= 768) {
+    if (getDocumentWidth() < 768) {
         setTimeout(function() {
             animateLogo();
         }, 500);

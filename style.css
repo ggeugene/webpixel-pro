@@ -850,6 +850,9 @@ footer .footer_pll-language-switcher select:active {
     background-color: white;
     border: 1px solid #9b9b9b;
 }
+.tablet-menu {
+    display: none;
+}
 .sidebar_pll-language-switcher {
     display: none;
 }
@@ -933,7 +936,7 @@ footer .footer_pll-language-switcher select:active {
     }
 }
 
-@media(max-width: 768px) {
+@media(max-width: 767px) {
     .sidebar {
         width: 100vw;
         top: -60px;
@@ -1226,5 +1229,107 @@ footer .footer_pll-language-switcher select:active {
     }
     .sidebar_pll-language-switcher .lang-item:not(:last-child) {
         padding-right: 5vw;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .full-logo-container svg {
+        width: 60%;
+    }
+    .logo-excerpt {
+        font-size: 5.5vw;
+    }
+    .social-link {
+        font-size: 2vw;
+    }
+    #fp-nav.right {
+        right: -20px;
+    }
+    .callback-button,
+    footer .footer_pll-language-switcher {
+        right: 28px;
+    }
+    .callback-button {
+        bottom: 3vh;
+    }
+    footer .footer_pll-language-switcher {
+        top: 3vh;
+    }
+    .section-heading {
+        font-size: 4.7vw;
+    }
+    p, .tab-pane {
+        font-size: 2.2vw;
+        line-height: 1.4;
+    }
+    .btn {
+        font-size: 2vw;
+        letter-spacing: 0;
+    }
+    .advantage-icon {
+        line-height: 1;
+    }
+    .advantage-icon i {
+        font-size: 5vw;
+    }
+    .advantage-header {
+        font-size: 2vw;
+    }
+    .advantage-text {
+        font-size: 2vw;
+        line-height: 1.1;
+    }
+    .tabs-left>li>a {
+        height: 5.5vw;
+        width: 5.5vw;
+    }
+    .tabs-left i {
+        font-size: 2.7vw;
+    }
+    .carousel-item-image-container,
+    .carousel-item-image {
+        height: auto;
+        width: 100%;
+    }
+    .tab-heading,
+    .carousel-item-heading,
+    .carousel-item-year {
+        font-size: 4vw;
+    }
+    .carousel-item-month {
+        font-size: 1.6vw;
+    }
+    #projects .section-heading::before {
+        width: 40%;
+    }
+    #projects .section-heading::after {
+        left: 28%;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    .modal select {
+        font-size: 2.5vw;
+    }
+    .menu-list-item a {
+        font-size: 7.5vw;
+    }
+    .menu-container {
+        transform: none;
+        right: 0;
+        height: auto;
+        width: 8.3333vw;
+    }
+    .sidebar.opened .menu-container {
+        right: 0;
+    }
+    .menu-container .menu-text,
+    .menu-container .material-icons {
+        display: none;
+    }
+    .menu-container > .tablet-menu {
+        display: block;
+        font-size: 4.5vw;
     }
 }
