@@ -1,4 +1,4 @@
-let storedState, originState;
+let storedState, originState, pageTitle;
 
 function getDocumentWidth() {
     return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -53,7 +53,7 @@ function ajaxLinkHandler(url) {
             'pageType': 'home',
             'href': url
         };
-        window.history.pushState(storedState, '', url);
+        window.history.pushState(storedState, pageTitle, url);
         // console.log(storedState);
     } else if(url.includes('#')) {
         storedState = {
@@ -89,7 +89,7 @@ function ajaxLinkHandler(url) {
                 if(jQuery('.hamburger').hasClass('open')) jQuery('.hamburger').toggleClass('open')
             }
         }
-        window.history.pushState(storedState, '', url);
+        window.history.pushState(storedState, pageTitle, url);
     }
     // console.log(history.state);
 }
@@ -174,12 +174,14 @@ function ajaxLoadContent(url) {
                 let newLangSwitcher = jQuery(data).find('.footer_pll-language-switcher');
                 let oldMobileLangSwitcher = jQuery('nav .sidebar_pll-language-switcher');
                 let newMobileLangSwitcher = jQuery(data).find('.sidebar_pll-language-switcher');
+                pageTitle = jQuery(data).filter('title').text();
                 jQuery.fn.fullpage.destroy('all');
                 jQuery(oldContent).remove();
                 jQuery(oldLangSwitcher).remove();
                 jQuery(oldMobileLangSwitcher).remove();
                 jQuery('main').append(newContent);
                 jQuery('footer').prepend(newLangSwitcher);
+                jQuery('title').text(pageTitle);
                 jQuery('.sidebar_pll-container').append(newMobileLangSwitcher);
                 if(jQuery('#lightSlider').length > 0) initLightSlider();
                 if(jQuery('#googlemap').length > 0) initGoogleMap();
@@ -415,6 +417,7 @@ function initGoogleMap() {
 jQuery(document).ready(function($) {
 
     //init History API state
+    pageTitle = jQuery('title').text();
     
     if($('.project-single').length > 0) {
         originState = storedState = {
@@ -428,7 +431,7 @@ jQuery(document).ready(function($) {
         };
     } else originState = storedState = {'pageType': 'home', 'href': jQuery(location).attr('href')};
 
-    window.history.replaceState(originState, '', originState.url);
+    window.history.replaceState(originState, pageTitle, originState.url);
 
     if(document.getElementById('googlemap')) {
         initGoogleMap();
