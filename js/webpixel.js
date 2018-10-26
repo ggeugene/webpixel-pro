@@ -12,6 +12,30 @@ function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function setActiveMenuItem(url) {
+    // debugger;
+    let menuItems = jQuery('.menu-list-item:not(.sidebar_pll-container)');
+    jQuery('.menu-list-item').removeClass('active');
+    let flag = false;
+
+    jQuery.each(menuItems, function() {
+        let menuItemLink = jQuery(this).find('a').attr('href');
+        if(menuItemLink == url) {
+            jQuery(this).toggleClass('active');
+            flag = true;
+            return false;
+        }
+    });
+
+    if(!flag) {
+        if(url.includes('projects/')) {
+            jQuery('a[href*="projects"]').parent('.menu-list-item').toggleClass('active');
+        } else {
+            jQuery('a[href*="splash"]').parent('.menu-list-item').toggleClass('active');
+        }
+    }
+}
+
 function setCustomFileInput() {
     let input = jQuery( 'input.input-file' );
     
@@ -418,7 +442,7 @@ jQuery(document).ready(function($) {
 
     //init History API state
     pageTitle = jQuery('title').text();
-    
+
     if($('.project-single').length > 0) {
         originState = storedState = {
             'pageType': 'project-single',
@@ -570,6 +594,7 @@ jQuery(document).ready(function($) {
             
             scrolltoSection(getUrlHash(prevState.href), false);
         }
+        setActiveMenuItem(url);
 
         if(prevState) {
             storedState = prevState;
