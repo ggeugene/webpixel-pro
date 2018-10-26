@@ -654,10 +654,13 @@ textarea {
     margin-bottom: 0px;
     width: 100%;
     font-size: 2vh;
-    padding: 18px;
+    padding: 18px 40px 18px 18px;
     color: #000000;
     background-color: transparent;
     border: 1px solid #000000;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: right 13px top 25px;
 }
 input.privacy-check {
     margin: 30px 0;
@@ -866,6 +869,15 @@ label {
 .carousel-item-excerpt {
     margin-bottom: 0;
 }
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;       /* remove default arrow */
+    background-image: url('img/angle-arrow-down.png');
+}
+select::-ms-expand { 
+    display: none;
+}
 footer .footer_pll-language-switcher {
     position: fixed;
     right: 65px;
@@ -876,9 +888,12 @@ footer .footer_pll-language-switcher select {
     border: 1px solid #9b9b9b;
     font-size: 16px;
     color: #9b9b9b;
-    padding: 7px 15px 4px 10px;
+    padding: 7px 30px 4px 10px;
     border-radius: 0;
     font-weight: bold;
+    background-size: 7px;
+    background-repeat: no-repeat;
+    background-position: right 12px top 14px;
 }
 footer .footer_pll-language-switcher select:focus,
 footer .footer_pll-language-switcher select:active {
@@ -1223,8 +1238,9 @@ span.wpcf7-not-valid-tip {
         font-size: 14px;
     }
     .modal .service-menu {
-        padding: 10px;
-        /* margin-bottom: 10px; */
+        padding: 10px 32px 10px 10px;
+        background-size: 13px;
+        background-position: right 10px top 15px;
     }
     textarea {
         height: 150px;
@@ -1392,7 +1408,8 @@ span.wpcf7-not-valid-tip {
     }
     textarea {
         font-size: 2.5vw;
-        padding: 14px;
+        padding: 14px 36px 14px 14px;
+        background-position: right 12px top 22px;
     }
     .modal select {
         font-size: 2.5vw;
@@ -1502,6 +1519,9 @@ span.wpcf7-not-valid-tip {
     .carousel-item-heading,
     .carousel-item-year {
         font-size: 4.5vw;
+    }
+    .modal select {
+        background-position: right 13px top 30px;
     }
     input[type="text"], input[type="email"], input[type="tel"], .input-file + label, input[type="submit"] {
         max-width: 80%;
