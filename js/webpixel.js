@@ -13,7 +13,6 @@ function getRandom(min, max) {
 }
 
 function setActiveMenuItem(url) {
-    // debugger;
     let menuItems = jQuery('.menu-list-item:not(.sidebar_pll-container)');
     jQuery('.menu-list-item').removeClass('active');
     let flag = false;
@@ -34,6 +33,16 @@ function setActiveMenuItem(url) {
             jQuery('a[href*="splash"]').parent('.menu-list-item').toggleClass('active');
         }
     }
+}
+
+function setActiveMenuOnReady(url) {
+    jQuery('.menu-list-item').removeClass('active');
+    if(url.includes('projects/')) {
+        jQuery('.menu-list-item a[href*="projects"]').parent().addClass('active');
+    } else if(url.includes('#')) {
+        url = url.slice(url.lastIndexOf('#')-1);
+        jQuery('.menu-list-item a[href*="'+url+'"]').parent().addClass('active');
+    } else jQuery('a[href*="splash"]').parent('.menu-list-item').toggleClass('active');
 }
 
 function setCustomFileInput() {
@@ -60,7 +69,6 @@ function setCustomFileInput() {
 }
 
 function ajaxLinkHandler(url) {
-    // console.log(isCurrentPageAnchor(url));
     if(isCurrentPageAnchor(url) != true) {
         ajaxLoadContent(url);
         if(url.slice(-'projects'.length) === 'projects' || url.slice(-'projects/'.length) === 'projects/') {
@@ -331,7 +339,6 @@ function initFullPage() {
             afterLoad: function(anchorLink, index) {
                 if(index > 0) {
                     let newSection = jQuery(this);
-                    // animateLogoExcerpt();
                     let nextAnimatedElements = jQuery(newSection).find('.animated:not(.delayed)');
                     let delay = 0;
                     for (const element of nextAnimatedElements) {
@@ -463,6 +470,8 @@ jQuery(document).ready(function($) {
 
     //Full Page
     initFullPage();
+
+    setActiveMenuOnReady(document.location.href);
 
     //Projects slider
     initLightSlider();
