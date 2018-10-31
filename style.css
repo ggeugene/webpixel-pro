@@ -943,6 +943,9 @@ div.wpcf7-response-output {
 span.wpcf7-not-valid-tip {
     font-size: 16px;
 }
+.project-excerpt-container {
+    max-width: 50%;
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -1334,6 +1337,9 @@ span.wpcf7-not-valid-tip {
         background-position: left 14px top 15px;
         background-size: 14px;
     }
+    .project-excerpt-container {
+        max-width: 90%;
+    }
 }
 @media(min-width:768px) and (max-width:991px) {
     .full-logo-container svg {
@@ -1462,6 +1468,9 @@ span.wpcf7-not-valid-tip {
     .contact-mail::before {
         font-size: 4vw;
     }
+    .project-excerpt-container {
+        max-width: 90%;
+    }
 }
 @media(min-width:992px) and (max-width:1199px) {
     .contact-address::before,
@@ -1569,6 +1578,9 @@ span.wpcf7-not-valid-tip {
     }
     input.privacy-check + span {
         font-size: 24px;
+    }
+    .project-excerpt-container {
+        max-width: 70%;
     }
 }
 

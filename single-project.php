@@ -23,6 +23,9 @@ get_header(); ?>
                     <div class="project-date-container">
                         <p class="project-date"><?php the_field('month')?> <span class="project-year"><?php the_field('year')?></span></p>
                     </div>
+                    <div class="project-excerpt-container mt-4">
+                        <p class="project-excerpt text-center"><?php the_field('excerpt', $post->ID) ?></p>
+                    </div>
                 </div>
             </div>
         </section>
