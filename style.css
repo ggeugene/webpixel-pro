@@ -176,7 +176,8 @@ main::before {
 .carousel-item-image-container,
 .carousel-item-image {
     height: 100%;
-    /* width: auto; */
+    width: auto;
+    object-fit: contain;
 }
 .tab-subheading {
     font-size: 3.13vh;
@@ -952,6 +953,261 @@ span.wpcf7-not-valid-tip {
     max-width: 260px;
     width: 100%;
 }
+.preloader-container {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .15s ease-in-out;
+    z-index: 1;
+}
+.preloader-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+.preloader-square {
+    position: relative;
+    display: block;
+}
+.preloader-square::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-color: #ff8100;
+    transition: all 0.3s ease-in-out;
+    transform-origin: center;
+}
+.preloader-square:nth-child(1)::before {
+    left: -40px;
+    animation: custom-pulse-1 1.5s cubic-bezier(.6,0,.4,1) infinite;
+}
+.preloader-square:nth-child(2)::before {
+    left: -20px;
+    animation: custom-pulse-2 1.5s cubic-bezier(.6,0,.4,1) infinite;
+}
+.preloader-square:nth-child(3)::before {
+    left: 0px;
+    animation: custom-pulse-3 1.5s cubic-bezier(.6,0,.4,1) infinite;
+}
+.preloader-square:nth-child(4)::before {
+    left: 20px;
+    animation: custom-pulse-4 1.5s cubic-bezier(.6,0,.4,1) infinite;
+}
+.preloader-square:nth-child(5)::before {
+    left: 40px;
+    animation: custom-pulse-5 1.5s cubic-bezier(.6,0,.4,1) infinite;
+}
+
+@keyframes custom-pulse-1 {
+    0%{
+        left: -40px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: -16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    75% {
+        height: 16px;
+        top: 0;
+    }
+    100% {
+        left: -40px;
+    }
+}
+@-webkit-keyframes custom-pulse-1 {
+    0%{
+        left: -40px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: -16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    75% {
+        height: 16px;
+        top: 0;
+    }
+    100% {
+        left: -40px;
+        
+    }
+}
+@keyframes custom-pulse-2 {
+    0%{
+        left: -20px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: -16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        left: -20px;
+        height: 16px;
+        top: 0;
+    }
+}
+@-webkit-keyframes custom-pulse-2 {
+    0%{
+        left: -20px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: -16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        left: -20px;
+        height: 16px;
+        top: 0;
+    }
+}
+@keyframes custom-pulse-3 {
+    0%{ left: 0;
+        height: 16px;
+        top: 0;
+    }
+    25%{
+        left: 0;
+    }
+    50%,70% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        height: 16px;
+        top: 0;
+        left: 0;
+        
+    }
+}
+@-webkit-keyframes custom-pulse-3 {
+    0%{ left: 0;
+        height: 16px;
+        top: 0;
+    }
+    25%{
+        left: 0;
+    }
+    50%,70% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        height: 16px;
+        top: 0;
+        left: 0;
+        
+    }
+}
+@keyframes custom-pulse-4 {
+    0%{
+        left: 20px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: 16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        height: 16px;
+        top: 0;
+        left: 20px;
+    }
+}
+@-webkit-keyframes custom-pulse-4 {
+    0%{
+        left: 20px;
+        height: 16px;
+        top: 0;
+    }
+    25% {
+        left: 16px;
+    }
+    50% {
+        height: 54px;
+        top: -21px;
+    }
+    
+    100% {
+        height: 16px;
+        top: 0;
+        left: 20px;
+    }
+}
+@keyframes custom-pulse-5 {
+    0%{
+        left: 40px;
+        height: 16px;
+        top: 0;
+    }
+    25%{
+        left: 16px;
+    }
+    50%{
+        height: 54px;
+        top: -21px;
+    }
+    75%{
+        height: 16px;
+        top: 0;
+    }
+    100% {
+        left: 40px;
+    }
+}
+@-webkit-keyframes custom-pulse-5 {
+    0%{
+        left: 40px;
+        height: 16px;
+        top: 0;
+    }
+    25%{
+        left: 16px;
+    }
+    50%{
+        height: 54px;
+        top: -21px;
+    }
+    75%{
+        height: 16px;
+        top: 0;
+    }
+    100% {
+        left: 40px;
+    }
+}
 
 @-webkit-keyframes shadow-pulse
 {
@@ -1348,6 +1604,9 @@ span.wpcf7-not-valid-tip {
     }
     .tab-button {
         max-width: 100%;
+    }
+    .preloader-container {
+        position: fixed;
     }
 }
 @media(min-width:768px) and (max-width:991px) {
