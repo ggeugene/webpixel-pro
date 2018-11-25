@@ -1,2 +1,2 @@
 # webpixel-pro
-webpixel.pro Wordpress SPA, created using child twevtyseventeen theme
+webpixel.pro Wordpress SPA, created using child twentyseventeen theme
